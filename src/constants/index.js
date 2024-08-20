@@ -1,28 +1,25 @@
 import {
-  mobile,
-  backend,
-  creator,
-  web,
+  SMP,
+  SMK,
+  PENS,
+  sdn,
   javascript,
   typescript,
   html,
   css,
   reactjs,
-  redux,
   tailwind,
   nodejs,
   mongodb,
   git,
-  figma,
-  docker,
-  meta,
-  starbucks,
-  tesla,
-  shopify,
-  carrent,
+  orenda,
+  Kalkulator,
   jobit,
   tripguide,
   threejs,
+  nextjs,
+  Ig,
+  next,
 } from "../assets";
 
 export const navLinks = [
@@ -42,20 +39,24 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Web Developer",
-    icon: web,
+    title: "SDN 17 Pekanbaru",
+    icon: sdn,
+    history: "2011-2017",
   },
   {
-    title: "React Native Developer",
-    icon: mobile,
+    title: "SMPN 34 Pekanbaru",
+    icon: SMP,
+    history: "2017-2020",
   },
   {
-    title: "Backend Developer",
-    icon: backend,
+    title: "SMKS PGRI Pekanbaru",
+    icon: SMK,
+    history: "2020-2023",
   },
   {
-    title: "Content Creator",
-    icon: creator,
+    title: "Politeknik Electronika Negeri Surabaya",
+    icon: PENS,
+    history: "2024-Sekarang",
   },
 ];
 
@@ -81,10 +82,6 @@ const technologies = [
     icon: reactjs,
   },
   {
-    name: "Redux Toolkit",
-    icon: redux,
-  },
-  {
     name: "Tailwind CSS",
     icon: tailwind,
   },
@@ -105,102 +102,32 @@ const technologies = [
     icon: git,
   },
   {
-    name: "figma",
-    icon: figma,
-  },
-  {
-    name: "docker",
-    icon: docker,
+    name: "Next Js",
+    icon: nextjs,
   },
 ];
 
 const experiences = [
   {
-    title: "React.js Developer",
-    company_name: "Starbucks",
-    icon: starbucks,
+    title: "Fulstack Developer",
+    company_name: "Orenda Digital Agency",
+    icon: orenda,
     iconBg: "#383E56",
-    date: "March 2020 - April 2021",
+    date: "September 2023 - November 2023",
     points: [
       "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality web.",
       "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Participate in testing to minimize the presence of bugs.",
     ],
-  },
-  {
-    title: "React Native Developer",
-    company_name: "Tesla",
-    icon: tesla,
-    iconBg: "#E6DEDD",
-    date: "Jan 2021 - Feb 2022",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "Web Developer",
-    company_name: "Shopify",
-    icon: shopify,
-    iconBg: "#383E56",
-    date: "Jan 2022 - Jan 2023",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "Full stack Developer",
-    company_name: "Meta",
-    icon: meta,
-    iconBg: "#E6DEDD",
-    date: "Jan 2023 - Present",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-];
-
-const testimonials = [
-  {
-    testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "Acme Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
-  },
-  {
-    testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
-    designation: "COO",
-    company: "DEF Corp",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
-  },
-  {
-    testimonial:
-      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
   },
 ];
 
 const projects = [
   {
-    name: "Car Rent",
+    name: "Kalkulator",
     description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+      "With a simple yet functional design, our web calculator offers a practical solution to your calculation needs. Equipped with an intuitive and responsive interface, you can perform basic to advanced mathematical operations such as trigonometric and logarithmic functions with ease. This calculator is a reliable tool for students, professionals, or anyone who needs accurate calculations.",
     tags: [
       {
         name: "react",
@@ -215,13 +142,13 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: carrent,
+    image: Kalkulator,
     source_code_link: "https://github.com/",
   },
   {
-    name: "Job IT",
+    name: "Creative Thoughts Agency Web",
     description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+      "Welcome to our modern online store! Enjoy a pleasant shopping experience with an elegant interface, advanced search system and secure checkout process. We offer the latest product collections with fast shipping options and responsive customer service to ensure your satisfaction.",
     tags: [
       {
         name: "react",
@@ -236,13 +163,13 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: jobit,
+    image: next,
     source_code_link: "https://github.com/",
   },
   {
-    name: "Trip Guide",
+    name: "Instagram Clone",
     description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+      "Platform media sosial kami menawarkan pengalaman berbagi foto dan video yang seru dan interaktif. Dengan fitur unggah konten yang mudah, sistem pencarian canggih, dan kemampuan untuk berinteraksi dengan komunitas yang dinamis, Anda dapat dengan leluasa mengekspresikan diri dan berbagi momen istimewa Anda.",
     tags: [
       {
         name: "nextjs",
@@ -257,9 +184,9 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: tripguide,
+    image: Ig,
     source_code_link: "https://github.com/",
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export { services, technologies, experiences, projects };
