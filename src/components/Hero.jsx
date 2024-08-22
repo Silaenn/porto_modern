@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
 import { handleClick } from "../constants";
+import ReactTypingEffect from "react-typing-effect";
 
 const Hero = () => {
   return (
@@ -17,7 +18,14 @@ const Hero = () => {
 
         <div>
           <h1 className={`${styles.heroHeadText} text-[#E0E0E0]`}>
-            Hi, I'm <span className="text-[#F5DEB3]">Deo</span>
+            Hi, I'm <span className="text-[#F5DEB3]">Deo</span>{" "}
+            <ReactTypingEffect
+              text={["Keldi Silaen"]}
+              speed={100}
+              eraseSpeed={50}
+              typingDelay={200}
+              className="inline"
+            />
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-[#E0E0E0]`}>
             I am a student at the EEPIS (Electronic Engineering Polytechnic
