@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+  }
+}
+/* Mengatur gaya untuk scrollbar di browser berbasis WebKit (seperti Chrome dan Safari) */
+::-webkit-scrollbar {
+  width: 8px; /* Lebar scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--foreground)); /* Warna scrollbar */
+  border-radius: 6px; /* Membuat sudut melengkung */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary)); /* Warna scrollbar saat hover */
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background)); /* Warna track scrollbar */
+}
