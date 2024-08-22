@@ -167,7 +167,7 @@ const projects = [
     ],
     image: Course,
     video: videoShop,
-    source_code_link: "hhttps://github.com/Silaenn/React-website-course",
+    source_code_link: "https://github.com/Silaenn/React-website-course",
   },
   {
     name: "E-Commerce",
