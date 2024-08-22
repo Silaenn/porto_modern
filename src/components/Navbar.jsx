@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
-import { navLinks } from "../constants";
+import { handleClick, navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
 import { Code2 } from "lucide-react";
 
@@ -59,7 +59,9 @@ const Navbar = () => {
               } hover:text-white text-[18px] font-medium cursor-pointer transition-transform duration-300 ease-in-out hover:translate-y-[-5px]`}
               onClick={() => setActive(nav.title)}
             >
-              <a href={`#${nav.id}`}>{nav.title}</a>
+              <a href={`#${nav.id}`} onClick={handleClick}>
+                {nav.title}
+              </a>
             </li>
           ))}
         </ul>

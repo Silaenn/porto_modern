@@ -193,4 +193,13 @@ const projects = [
   },
 ];
 
-export { services, technologies, experiences, projects };
+const handleClick = (e) => {
+  e.preventDefault();
+  const targetId = e.currentTarget.getAttribute("href").slice(1);
+  const aboutSection = document.getElementById(targetId);
+  if (aboutSection) {
+    aboutSection.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
+export { services, technologies, experiences, projects, handleClick };

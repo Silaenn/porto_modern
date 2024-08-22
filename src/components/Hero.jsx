@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
+import { handleClick } from "../constants";
 
 const Hero = () => {
   return (
@@ -30,7 +31,7 @@ const Hero = () => {
       <ComputersCanvas />
 
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
-        <a href="#about">
+        <a href="#about" onClick={handleClick}>
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-[#F5DEB3] flex justify-center items-start p-2">
             <motion.div
               animate={{
@@ -41,7 +42,7 @@ const Hero = () => {
                 repeat: Infinity,
                 repeatType: "loop",
               }}
-              className="w-3 h-3 rounded-full bg-[#F5DEB3] mb-1"
+              className="w-3 h-3 rounded-full bg-[#F5DEB3] mb-1 "
             />
           </div>
         </a>

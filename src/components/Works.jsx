@@ -34,11 +34,11 @@ const ProjectCard = ({
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
         options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
+          max: 5,
+          scale: 1.09,
+          speed: 400,
         }}
-        className="bg-[#134B70] p-5 rounded-2xl sm:w-[360px] w-full"
+        className="bg-[#3b4d59] p-5 rounded-2xl sm:w-[360px] w-full"
       >
         <div
           className="relative w-full h-[230px] cursor-pointer"
@@ -65,10 +65,10 @@ const ProjectCard = ({
         </div>
 
         <Modal isOpen={isOpen} onClose={onClose} size={"xl"}>
-          <ModalOverlay />
-          <ModalContent maxW={"800px"} h={"550px"} background={"silver"}>
-            <ModalHeader>{name}</ModalHeader>
-            <ModalCloseButton />
+          <ModalOverlay backdropFilter="blur(10px) hue-rotate(90deg)" />
+          <ModalContent maxW={"800px"} h={"550px"} background={"darkgrey"}>
+            <ModalHeader className="text-black">{name}</ModalHeader>
+            <ModalCloseButton className="text-black" />
             <ModalBody className="">
               <div className="flex flex-col gap-5 ">
                 <video
@@ -76,10 +76,10 @@ const ProjectCard = ({
                   className="h-[300px] w-auto"
                   controls
                 ></video>
-                <h3 className="text-white text-base font-bold text-[24px]">
+                <h2 className="text-black text-base font-bold text-[24px]">
                   Description
-                </h3>
-                <p className="my-auto text-white text-[14px] ">{description}</p>
+                </h2>
+                <p className="my-auto text-black text-[15px] ">{description}</p>
               </div>
             </ModalBody>
           </ModalContent>
