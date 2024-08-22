@@ -20,6 +20,11 @@ import {
   nextjs,
   Ig,
   next,
+  videoKalkulator,
+  shop,
+  videoCourse,
+  Course,
+  videoShop,
 } from "../assets";
 
 export const navLinks = [
@@ -127,14 +132,14 @@ const projects = [
   {
     name: "Kalkulator",
     description:
-      "With a simple yet functional design, our web calculator offers a practical solution to your calculation needs. Equipped with an intuitive and responsive interface, you can perform basic to advanced mathematical operations such as trigonometric and logarithmic functions with ease. This calculator is a reliable tool for students, professionals, or anyone who needs accurate calculations.",
+      "With a simple yet functional design, our web calculator offers a practical solution to your calculation needs. Equipped with an intuitive and responsive interface, you can perform basic to advanced mathematical operations such as trigonometric and logarithmic functions with ease.",
     tags: [
       {
         name: "react",
         color: "blue-text-gradient",
       },
       {
-        name: "mongodb",
+        name: "prisma",
         color: "green-text-gradient",
       },
       {
@@ -143,49 +148,48 @@ const projects = [
       },
     ],
     image: Kalkulator,
-    source_code_link: "https://github.com/",
+    video: videoKalkulator,
+    source_code_link: "https://github.com/Silaenn/calculator",
   },
   {
-    name: "Creative Thoughts Agency Web",
+    name: "Course Web",
     description:
-      "Welcome to our modern online store! Enjoy a pleasant shopping experience with an elegant interface, advanced search system and secure checkout process. We offer the latest product collections with fast shipping options and responsive customer service to ensure your satisfaction.",
+      "Improve your skills with thousands of quality courses from experts on our online learning platform. Enjoy complete materials, learning videos, assignments and certificates at affordable prices. You can also interact with instructors and other students through the discussion forums provided.",
     tags: [
       {
         name: "react",
         color: "blue-text-gradient",
       },
       {
-        name: "restapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "scss",
+        name: "bootstrap",
         color: "pink-text-gradient",
       },
     ],
-    image: next,
-    source_code_link: "https://github.com/",
+    image: Course,
+    video: videoShop,
+    source_code_link: "hhttps://github.com/Silaenn/React-website-course",
   },
   {
-    name: "Instagram Clone",
+    name: "E-Commerce",
     description:
-      "Platform media sosial kami menawarkan pengalaman berbagi foto dan video yang seru dan interaktif. Dengan fitur unggah konten yang mudah, sistem pencarian canggih, dan kemampuan untuk berinteraksi dengan komunitas yang dinamis, Anda dapat dengan leluasa mengekspresikan diri dan berbagi momen istimewa Anda.",
+      "This project is an e-commerce platform designed to provide a modern, fast, and responsive online shopping experience. The website allows users to browse various products, add items to cart, make payment transactions and provides a seamless and intuitive shopping experience",
     tags: [
       {
         name: "nextjs",
         color: "blue-text-gradient",
       },
       {
-        name: "supabase",
+        name: "strapi",
         color: "green-text-gradient",
       },
       {
-        name: "css",
+        name: "tailwand",
         color: "pink-text-gradient",
       },
     ],
-    image: Ig,
-    source_code_link: "https://github.com/",
+    image: shop,
+    video: videoCourse,
+    source_code_link: "https://github.com/Silaenn/e-commerce",
   },
 ];
 

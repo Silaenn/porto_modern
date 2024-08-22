@@ -43,7 +43,7 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <Code2 className="h-9 w-7 transition-all duration-300 ease-in-out group-hover:rotate-[20deg]" />
+          <Code2 className="h-9 w-7 transition-all duration-300 ease-in-out group-hover:rotate-[20deg] text-white" />
           <p className="text-[#E0E0E0] text-[18px] font-bold cursor-pointer flex ">
             Deo &nbsp;
             <span className="sm:block hidden"> | Keldi Silaen</span>

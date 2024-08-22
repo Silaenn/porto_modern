@@ -31,8 +31,13 @@ import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 import nextjs from "./tech/nextJs.png";
 import Kalkulator from "./kalkulator.png";
+import Course from "./course.png";
+import shop from "./shop.png";
 import Ig from "./ig.png";
 import next from "./next.png";
+import videoKalkulator from "./kalkulator.mp4";
+import videoCourse from "./course.mp4";
+import videoShop from "./shop.mp4";
 
 export {
   logo,
@@ -44,6 +49,8 @@ export {
   menu,
   close,
   css,
+  Course,
+  shop,
   docker,
   figma,
   git,
@@ -67,4 +74,7 @@ export {
   Kalkulator,
   Ig,
   next,
+  videoKalkulator,
+  videoCourse,
+  videoShop,
 };

@@ -7,4 +7,10 @@ export default defineConfig({
   build: {
     outDir: "dist",
   },
+  compilerOptions: {
+    baseUrl: ".",
+    paths: {
+      "@/*": ["./src/*"],
+    },
+  },
 });
