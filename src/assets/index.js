@@ -38,6 +38,7 @@ import next from "./next.png";
 import videoKalkulator from "./kalkulator.mp4";
 import videoCourse from "./course.mp4";
 import videoShop from "./shop.mp4";
+import deo from "./deo.jpg";
 
 export {
   logo,
@@ -77,4 +78,5 @@ export {
   videoKalkulator,
   videoCourse,
   videoShop,
+  deo,
 };
