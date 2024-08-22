@@ -66,8 +66,8 @@ const ProjectCard = ({
 
         <Modal isOpen={isOpen} onClose={onClose} size={"xl"}>
           <ModalOverlay />
-          <ModalContent maxW={"800px"} h={"550px"}>
-            <ModalHeader>Kalkulator</ModalHeader>
+          <ModalContent maxW={"800px"} h={"550px"} background={"silver"}>
+            <ModalHeader>{name}</ModalHeader>
             <ModalCloseButton />
             <ModalBody className="">
               <div className="flex flex-col gap-5 ">
