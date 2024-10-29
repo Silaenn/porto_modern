@@ -25,6 +25,8 @@ import {
   videoCourse,
   Course,
   videoShop,
+  JejakPancasila,
+  VidJejakPancasila,
 } from "../assets";
 
 export const navLinks = [
@@ -61,7 +63,7 @@ const services = [
   {
     title: "Politeknik Electronika Negeri Surabaya",
     icon: PENS,
-    history: "2024-Sekarang",
+    history: "2024-Now",
   },
 ];
 
@@ -190,6 +192,24 @@ const projects = [
     image: shop,
     video: videoCourse,
     source_code_link: "https://github.com/Silaenn/e-commerce",
+  },
+  {
+    name: "Jejak Pancasila",
+    description:
+      "Jejak Pancasila is a 2D scrolling pixel art game inspired by classic games like Life is a Game, where you embark on a journey through three significant stages of life: elementary school (SD), high school (SMA), and adulthood as a working professional",
+    tags: [
+      {
+        name: "Unity",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Pixel studio",
+        color: "green-text-gradient",
+      },
+    ],
+    image: JejakPancasila,
+    video: VidJejakPancasila,
+    source_code_link: "https://github.com/Silaenn/EdukatifDev",
   },
 ];
 

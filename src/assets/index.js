@@ -39,6 +39,8 @@ import videoKalkulator from "./kalkulator.mp4";
 import videoCourse from "./course.mp4";
 import videoShop from "./shop.mp4";
 import deo from "./deo.jpg";
+import JejakPancasila from "./JejakPancasila.png";
+import VidJejakPancasila from "./VidJejakPancasila.mp4";
 
 export {
   logo,
@@ -79,4 +81,6 @@ export {
   videoCourse,
   videoShop,
   deo,
+  JejakPancasila,
+  VidJejakPancasila,
 };
