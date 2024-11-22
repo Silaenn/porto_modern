@@ -27,6 +27,7 @@ import {
   videoShop,
   JejakPancasila,
   VidJejakPancasila,
+  FlapofFear,
 } from "../assets";
 
 export const navLinks = [
@@ -210,6 +211,24 @@ const projects = [
     image: JejakPancasila,
     video: VidJejakPancasila,
     source_code_link: "https://github.com/Silaenn/EdukatifDev",
+  },
+  {
+    name: "Flap of Fear",
+    description:
+      "Fly in the dark and avoid scary obstacles in Flappy Bird of Terror! This game is a horror interpretation of the classic game Flappy Bird, where players control a scary bird in a world filled with dark and eerie elements.",
+    tags: [
+      {
+        name: "Unity",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Pixel studio",
+        color: "green-text-gradient",
+      },
+    ],
+    image: FlapofFear,
+    video: VidJejakPancasila,
+    source_code_link: "https://github.com/Silaenn/FlappyBird-versi-",
   },
 ];
 

@@ -41,6 +41,7 @@ import videoShop from "./shop.mp4";
 import deo from "./deo.jpg";
 import JejakPancasila from "./JejakPancasila.png";
 import VidJejakPancasila from "./VidJejakPancasila.mp4";
+import FlapofFear from "./FlapofFear.png";
 
 export {
   logo,
@@ -83,4 +84,5 @@ export {
   deo,
   JejakPancasila,
   VidJejakPancasila,
+  FlapofFear,
 };
