@@ -227,7 +227,7 @@ const projects = [
       },
     ],
     image: FlapofFear,
-    video: VidJejakPancasila,
+    // video: FlapofFear,
     source_code_link: "https://github.com/Silaenn/FlappyBird-versi-",
   },
 ];

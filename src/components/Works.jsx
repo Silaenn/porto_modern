@@ -64,22 +64,63 @@ const ProjectCard = ({
           </div>
         </div>
 
-        <Modal isOpen={isOpen} onClose={onClose} size={"xl"}>
-          <ModalOverlay backdropFilter="blur(10px) hue-rotate(90deg)" />
-          <ModalContent maxW={"800px"} h={"550px"} background={"darkgrey"}>
-            <ModalHeader className="text-black">{name}</ModalHeader>
-            <ModalCloseButton className="text-black" />
-            <ModalBody className="">
-              <div className="flex flex-col gap-5 ">
-                <video
-                  src={video}
-                  className="h-[300px] w-auto"
-                  controls
-                ></video>
-                <h2 className="text-black text-base font-bold text-[24px]">
-                  Description
-                </h2>
-                <p className="my-auto text-black text-[15px] ">{description}</p>
+        <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
+          <ModalOverlay
+            backdropFilter="blur(10px) hue-rotate(90deg)"
+            bg="blackAlpha.600"
+          />
+          <ModalContent
+            maxW="800px"
+            minH="550px"
+            bg="gray.800"
+            borderRadius="xl"
+            boxShadow="2xl"
+            p={0}
+          >
+            <ModalHeader
+              bgGradient="linear(to-r, blue.400, purple.400)"
+              bgClip="text"
+              borderBottomWidth={1}
+              borderColor="whiteAlpha.200"
+            >
+              {name}
+            </ModalHeader>
+            <ModalCloseButton color="gray.400" _hover={{ color: "white" }} />
+            <ModalBody p={6}>
+              <div className="flex flex-col gap-6">
+                <div className="relative rounded-xl overflow-hidden shadow-lg bg-black/20">
+                  {video ? (
+                    <video
+                      src={video}
+                      className="w-full h-[300px] object-contain"
+                      controls
+                    />
+                  ) : (
+                    <img
+                      src={image}
+                      alt="project_image"
+                      className="w-full h-[300px] object-contain rounded-lg"
+                    />
+                  )}
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-blue-400 mb-3">
+                    Description
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed">{description}</p>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {tags.map((tag) => (
+                    <span
+                      key={`modal-${name}-${tag.name}`}
+                      className="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300"
+                    >
+                      #{tag.name}
+                    </span>
+                  ))}
+                </div>
               </div>
             </ModalBody>
           </ModalContent>
