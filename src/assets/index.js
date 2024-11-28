@@ -42,6 +42,7 @@ import deo from "./deo.jpg";
 import JejakPancasila from "./JejakPancasila.png";
 import VidJejakPancasila from "./VidJejakPancasila.mp4";
 import FlapofFear from "./FlapofFear.png";
+import HighwayHustle from "./HighwayHustle.png";
 
 export {
   logo,
@@ -85,4 +86,5 @@ export {
   JejakPancasila,
   VidJejakPancasila,
   FlapofFear,
+  HighwayHustle,
 };

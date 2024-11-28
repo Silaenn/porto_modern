@@ -28,6 +28,7 @@ import {
   JejakPancasila,
   VidJejakPancasila,
   FlapofFear,
+  HighwayHustle,
 } from "../assets";
 
 export const navLinks = [
@@ -229,6 +230,24 @@ const projects = [
     image: FlapofFear,
     // video: FlapofFear,
     source_code_link: "https://github.com/Silaenn/FlappyBird-versi-",
+  },
+  {
+    name: "Highway Hustle",
+    description:
+      "Are you ready to embark on an adrenaline-pumping journey down the highway? Highway Hustle is a thrilling top-down mobile driving game that challenges your reflexes and decision-making skills.",
+    tags: [
+      {
+        name: "Unity",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Adobe Ilus",
+        color: "green-text-gradient",
+      },
+    ],
+    image: HighwayHustle,
+    // video: FlapofFear,
+    source_code_link: "https://github.com/Silaenn/Catch-the-Coins",
   },
 ];
 
