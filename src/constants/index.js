@@ -29,6 +29,9 @@ import {
   VidJejakPancasila,
   FlapofFear,
   HighwayHustle,
+  Unity,
+  Shoot,
+  RoyalRun,
 } from "../assets";
 
 export const navLinks = [
@@ -114,6 +117,10 @@ const technologies = [
     name: "Next Js",
     icon: nextjs,
   },
+  {
+    name: "Unity",
+    icon: Unity
+  }
 ];
 
 const experiences = [
@@ -241,7 +248,7 @@ const projects = [
         color: "blue-text-gradient",
       },
       {
-        name: "Adobe Ilus",
+        name: "Adobe Illustrator",
         color: "green-text-gradient",
       },
     ],
@@ -249,6 +256,34 @@ const projects = [
     // video: FlapofFear,
     source_code_link: "https://github.com/Silaenn/Catch-the-Coins",
   },
+  {
+    name: "Shooting Gallery",
+    description:
+      "Get ready for a thrilling 2D shooting experience with Shooting Gallery! Step right up to the carnival-inspired range, take aim, and test your sharpshooting skills in this fast-paced, action-packed game. Whether you're a casual gamer or a competitive player, this game will keep you on your toes with its vibrant visuals, catchy audio, and addictive gameplay.",
+    tags: [
+      {
+        name: "Unity",
+        color: "blue-text-gradient",
+      },
+    ],
+    image: Shoot,
+    // video: FlapofFear,
+    source_code_link: "https://github.com/Silaenn/ShootingGallery",
+  },
+  // {
+  //   name: "Royal Run",
+  //   description:
+  //     "",
+  //   tags: [
+  //     {
+  //       name: "Unity",
+  //       color: "blue-text-gradient",
+  //     },
+  //   ],
+  //   image: RoyalRun,
+  //   // video: FlapofFear,
+  //   source_code_link: "https://github.com/Silaenn/RoyalRun",
+  // },
 ];
 
 const handleClick = (e) => {

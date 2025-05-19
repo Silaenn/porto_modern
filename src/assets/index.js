@@ -43,6 +43,9 @@ import JejakPancasila from "./JejakPancasila.png";
 import VidJejakPancasila from "./VidJejakPancasila.mp4";
 import FlapofFear from "./FlapofFear.png";
 import HighwayHustle from "./HighwayHustle.png";
+import Unity from "./Unity.png";
+import  Shoot from "./shoot.png";
+import RoyalRun from "./RoyalRun.png";
 
 export {
   logo,
@@ -87,4 +90,7 @@ export {
   VidJejakPancasila,
   FlapofFear,
   HighwayHustle,
+  Unity,
+  Shoot,
+  RoyalRun
 };
