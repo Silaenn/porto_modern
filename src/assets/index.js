@@ -44,7 +44,7 @@ import VidJejakPancasila from "./VidJejakPancasila.mp4";
 import FlapofFear from "./FlapofFear.png";
 import HighwayHustle from "./HighwayHustle.png";
 import Unity from "./Unity.png";
-import  Shoot from "./shoot.png";
+import  Shoot from "./shoott.png";
 import RoyalRun from "./RoyalRun.png";
 
 export {

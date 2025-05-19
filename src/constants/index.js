@@ -162,24 +162,24 @@ const projects = [
     video: videoKalkulator,
     source_code_link: "https://github.com/Silaenn/calculator",
   },
-  {
-    name: "Course Web",
-    description:
-      "Improve your skills with thousands of quality courses from experts on our online learning platform. Enjoy complete materials, learning videos, assignments and certificates at affordable prices. You can also interact with instructors and other students through the discussion forums provided.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "bootstrap",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: Course,
-    video: videoShop,
-    source_code_link: "https://github.com/Silaenn/React-website-course",
-  },
+  // {
+  //   name: "Course Web",
+  //   description:
+  //     "Improve your skills with thousands of quality courses from experts on our online learning platform. Enjoy complete materials, learning videos, assignments and certificates at affordable prices. You can also interact with instructors and other students through the discussion forums provided.",
+  //   tags: [
+  //     {
+  //       name: "react",
+  //       color: "blue-text-gradient",
+  //     },
+  //     {
+  //       name: "bootstrap",
+  //       color: "pink-text-gradient",
+  //     },
+  //   ],
+  //   image: Course,
+  //   video: videoShop,
+  //   source_code_link: "https://github.com/Silaenn/React-website-course",
+  // },
   {
     name: "E-Commerce",
     description:
@@ -259,7 +259,7 @@ const projects = [
   {
     name: "Shooting Gallery",
     description:
-      "Get ready for a thrilling 2D shooting experience with Shooting Gallery! Step right up to the carnival-inspired range, take aim, and test your sharpshooting skills in this fast-paced, action-packed game. Whether you're a casual gamer or a competitive player, this game will keep you on your toes with its vibrant visuals, catchy audio, and addictive gameplay.",
+      "Get ready for a thrilling 2D shooting experience with Shooting Gallery! Step right up to the carnival-inspired range, take aim, and test your sharpshooting skills in this fast-paced, action-packed game.",
     tags: [
       {
         name: "Unity",
@@ -280,9 +280,9 @@ const projects = [
   //       color: "blue-text-gradient",
   //     },
   //   ],
-  //   image: RoyalRun,
+  //   // image: RoyalRun,
   //   // video: FlapofFear,
-  //   source_code_link: "https://github.com/Silaenn/RoyalRun",
+  //   // source_code_link: "https://github.com/Silaenn/RoyalRun",
   // },
 ];
 
