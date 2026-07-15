@@ -1,52 +1,14 @@
-import {
-  javascript,
-  typescript,
-  html,
-  css,
-  reactjs,
-  tailwind,
-  nodejs,
-  mongodb,
-  git,
-  threejs,
-  nextjs,
-  docker,
-  figma,
-} from "../assets";
-
-export const navLinks = [
-  { id: "about", title: "About" },
-  { id: "work", title: "Work" },
-  { id: "contact", title: "Contact" },
-];
-
 const services = [
   {
     title: "Springfield High School",
-    icon: "https://img.icons8.com/fluency/96/000000/school.png",
+    icon: "school",
     history: "2016-2020",
   },
   {
     title: "Metro State University",
-    icon: "https://img.icons8.com/fluency/96/000000/graduation-cap.png",
+    icon: "graduation",
     history: "2020-2024",
   },
-];
-
-const technologies = [
-  { name: "HTML 5", icon: html },
-  { name: "CSS 3", icon: css },
-  { name: "JavaScript", icon: javascript },
-  { name: "TypeScript", icon: typescript },
-  { name: "React JS", icon: reactjs },
-  { name: "Tailwind CSS", icon: tailwind },
-  { name: "Node JS", icon: nodejs },
-  { name: "MongoDB", icon: mongodb },
-  { name: "Three JS", icon: threejs },
-  { name: "Next JS", icon: nextjs },
-  { name: "Docker", icon: docker },
-  { name: "Figma", icon: figma },
-  { name: "git", icon: git },
 ];
 
 const experiences = [
@@ -128,13 +90,4 @@ const projects = [
   },
 ];
 
-const handleClick = (e) => {
-  e.preventDefault();
-  const targetId = e.currentTarget.getAttribute("href").slice(1);
-  const aboutSection = document.getElementById(targetId);
-  if (aboutSection) {
-    aboutSection.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
-export { services, technologies, experiences, projects, handleClick };
+export { services, experiences, projects };

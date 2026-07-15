@@ -1,22 +1,13 @@
 import React from "react";
 
 const DesktopIcon = ({ icon, label, onDoubleClick }) => {
-  const handleDoubleClick = (e) => {
-    e.preventDefault();
-    onDoubleClick();
-  };
-
   return (
     <div
-      className="flex flex-col items-center w-20 cursor-pointer group"
-      onDoubleClick={handleDoubleClick}
+      className="flex flex-col items-center w-20 cursor-pointer"
+      onDoubleClick={(e) => { e.preventDefault(); onDoubleClick(); }}
     >
-      <div className="w-12 h-12 flex items-center justify-center mb-1">
-        {typeof icon === "string" ? (
-          <span className="text-4xl">{icon}</span>
-        ) : (
-          icon
-        )}
+      <div className="w-14 h-14 flex items-center justify-center mb-1">
+        {icon}
       </div>
       <span
         className="text-white text-xs text-center px-1 py-0.5 rounded group-hover:bg-blue-900/50 group-active:bg-blue-800/70 truncate max-w-full"

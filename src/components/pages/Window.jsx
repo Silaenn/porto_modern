@@ -9,6 +9,7 @@ const Window = ({
   children,
   defaultPosition = { x: 100, y: 100 },
   defaultSize = { width: 600, height: 400 },
+  zIndex: propZIndex = null,
 }) => {
   const [position, setPosition] = useState(defaultPosition);
   const [size, setSize] = useState(defaultSize);
@@ -97,7 +98,7 @@ const Window = ({
     };
   }, [isDragging, isResizing, handleMouseMove, handleMouseUp]);
 
-  const zIndex = isFocused ? 1000 : 999;
+  const zIndex = propZIndex ?? (isFocused ? 1000 : 999);
 
   if (isMinimized) return null;
 
@@ -131,7 +132,7 @@ const Window = ({
           onMouseDown={handleMouseDown}
         >
           {icon && (
-            <span className="text-white text-sm mr-1.5 ml-0.5">{icon}</span>
+            <span className="flex items-center mr-1.5 ml-0.5">{icon}</span>
           )}
           <span
             className="text-white text-sm font-bold flex-1 truncate"
