@@ -83,7 +83,7 @@ const Taskbar = ({ openWindows, activeWindow, minimizedWindows, onWindowClick, o
               }}
               onClick={() => onWindowClick(w.id)}
             >
-              {w.iconCmp && <w.iconCmp size={14} />}
+              {w.iconCmp && <w.iconCmp size={14} color="#000" />}
               <span className="truncate">{w.title}</span>
             </button>
           );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 const skillCategories = [
   {
@@ -31,17 +31,15 @@ const skillCategories = [
   },
 ];
 
-const SkillRow = ({ skill, animate }) => {
+const SkillRow = ({ skill }) => {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
-    if (animate) {
-      const raf = requestAnimationFrame(() => {
-        requestAnimationFrame(() => setWidth(skill.level));
-      });
-      return () => cancelAnimationFrame(raf);
-    }
-  }, [animate, skill.level]);
+    const raf = requestAnimationFrame(() => {
+      requestAnimationFrame(() => setWidth(skill.level));
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [skill.level]);
 
   return (
     <div className="flex items-center gap-3 px-3 py-2">
@@ -68,12 +66,8 @@ const SkillRow = ({ skill, animate }) => {
 
 const SkillsPage = () => {
   const [expanded, setExpanded] = useState({});
-  const activated = useRef({});
-
   const toggle = (catName) => {
-    const next = !expanded[catName];
-    if (next) activated.current[catName] = true;
-    setExpanded((prev) => ({ ...prev, [catName]: next }));
+    setExpanded((prev) => ({ ...prev, [catName]: !prev[catName] }));
   };
 
   return (
@@ -109,7 +103,6 @@ const SkillsPage = () => {
                   <SkillRow
                     key={skill.name}
                     skill={skill}
-                    animate={!!activated.current[cat.name]}
                   />
                 ))}
               </div>
