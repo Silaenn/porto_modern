@@ -1,8 +1,3 @@
-import logo from "./logo.svg";
-import SMK from "./SMKS.jpeg";
-import PENS from "./Pens.jpeg";
-import SMP from "./SMP.jpeg";
-import sdn from "./SDN.png";
 import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
@@ -20,45 +15,13 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
-
-import meta from "./company/meta.png";
-import shopify from "./company/shopify.png";
-import orenda from "./company/Orenda.jpg";
-import tesla from "./company/tesla.png";
-
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
 import nextjs from "./tech/nextJs.png";
-import Kalkulator from "./kalkulator.png";
-import Course from "./course.png";
-import shop from "./shop.png";
-import Ig from "./ig.png";
-import next from "./next.png";
-import videoKalkulator from "./kalkulator.mp4";
-import videoCourse from "./course.mp4";
-import videoShop from "./shop.mp4";
-import deo from "./deo.jpg";
-import JejakPancasila from "./JejakPancasila.png";
-import VidJejakPancasila from "./VidJejakPancasila.mp4";
-import FlapofFear from "./FlapofFear.png";
-import HighwayHustle from "./HighwayHustle.png";
-import Unity from "./Unity.png";
-import  Shoot from "./shoott.png";
-import RoyalRun from "./RoyalRun.png";
 
 export {
-  logo,
-  SMK,
-  PENS,
-  SMP,
-  sdn,
   github,
   menu,
   close,
   css,
-  Course,
-  shop,
   docker,
   figma,
   git,
@@ -71,26 +34,5 @@ export {
   tailwind,
   typescript,
   threejs,
-  meta,
-  shopify,
-  orenda,
-  tesla,
-  carrent,
-  jobit,
-  tripguide,
   nextjs,
-  Kalkulator,
-  Ig,
-  next,
-  videoKalkulator,
-  videoCourse,
-  videoShop,
-  deo,
-  JejakPancasila,
-  VidJejakPancasila,
-  FlapofFear,
-  HighwayHustle,
-  Unity,
-  Shoot,
-  RoyalRun
 };

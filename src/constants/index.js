@@ -1,8 +1,4 @@
 import {
-  SMP,
-  SMK,
-  PENS,
-  sdn,
   javascript,
   typescript,
   html,
@@ -12,278 +8,124 @@ import {
   nodejs,
   mongodb,
   git,
-  orenda,
-  Kalkulator,
-  jobit,
-  tripguide,
   threejs,
   nextjs,
-  Ig,
-  next,
-  videoKalkulator,
-  shop,
-  videoCourse,
-  Course,
-  videoShop,
-  JejakPancasila,
-  VidJejakPancasila,
-  FlapofFear,
-  HighwayHustle,
-  Unity,
-  Shoot,
-  RoyalRun,
+  docker,
+  figma,
 } from "../assets";
 
 export const navLinks = [
-  {
-    id: "about",
-    title: "About",
-  },
-  {
-    id: "work",
-    title: "Work",
-  },
-  {
-    id: "contact",
-    title: "Contact",
-  },
+  { id: "about", title: "About" },
+  { id: "work", title: "Work" },
+  { id: "contact", title: "Contact" },
 ];
 
 const services = [
   {
-    title: "SDN 17 Pekanbaru",
-    icon: sdn,
-    history: "2011-2017",
+    title: "Springfield High School",
+    icon: "https://img.icons8.com/fluency/96/000000/school.png",
+    history: "2016-2020",
   },
   {
-    title: "SMPN 34 Pekanbaru",
-    icon: SMP,
-    history: "2017-2020",
-  },
-  {
-    title: "SMKS PGRI Pekanbaru",
-    icon: SMK,
-    history: "2020-2023",
-  },
-  {
-    title: "Politeknik Electronika Negeri Surabaya",
-    icon: PENS,
-    history: "2024-Now",
+    title: "Metro State University",
+    icon: "https://img.icons8.com/fluency/96/000000/graduation-cap.png",
+    history: "2020-2024",
   },
 ];
 
 const technologies = [
-  {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
-    name: "TypeScript",
-    icon: typescript,
-  },
-  {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "git",
-    icon: git,
-  },
-  {
-    name: "Next Js",
-    icon: nextjs,
-  },
-  {
-    name: "Unity",
-    icon: Unity
-  }
+  { name: "HTML 5", icon: html },
+  { name: "CSS 3", icon: css },
+  { name: "JavaScript", icon: javascript },
+  { name: "TypeScript", icon: typescript },
+  { name: "React JS", icon: reactjs },
+  { name: "Tailwind CSS", icon: tailwind },
+  { name: "Node JS", icon: nodejs },
+  { name: "MongoDB", icon: mongodb },
+  { name: "Three JS", icon: threejs },
+  { name: "Next JS", icon: nextjs },
+  { name: "Docker", icon: docker },
+  { name: "Figma", icon: figma },
+  { name: "git", icon: git },
 ];
 
 const experiences = [
   {
-    title: "Fulstack Developer",
-    company_name: "Orenda Digital Agency",
-    icon: orenda,
+    title: "Junior Developer",
+    company_name: "NovaTech Solutions",
+    icon: "https://img.icons8.com/fluency/96/000000/idea.png",
     iconBg: "#383E56",
-    date: "September 2023 - November 2023",
+    date: "Jan 2022 - Jun 2023",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality web.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participate in testing to minimize the presence of bugs.",
+      "Developed and maintained web applications using React.js and Node.js.",
+      "Collaborated with cross-functional teams to deliver high-quality features.",
+      "Implemented responsive designs and ensured cross-browser compatibility.",
+      "Participated in code reviews and testing to maintain code quality.",
+    ],
+  },
+  {
+    title: "Full-Stack Developer",
+    company_name: "PixelCraft Studio",
+    icon: "https://img.icons8.com/fluency/96/000000/code.png",
+    iconBg: "#E6DEDD",
+    date: "Jul 2023 - Present",
+    points: [
+      "Built scalable APIs and microservices using Node.js and Express.",
+      "Led frontend development with React, TypeScript, and Tailwind CSS.",
+      "Managed databases and optimized queries for performance.",
+      "Mentored junior developers and established coding standards.",
     ],
   },
 ];
 
 const projects = [
   {
-    name: "Kalkulator",
+    name: "ShopWave",
     description:
-      "With a simple yet functional design, our web calculator offers a practical solution to your calculation needs. Equipped with an intuitive and responsive interface, you can perform basic to advanced mathematical operations such as trigonometric and logarithmic functions with ease.",
+      "A full-featured e-commerce platform with real-time inventory management, payment integration, and a responsive shopping experience across all devices.",
     tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "prisma",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "pink-text-gradient",
-      },
+      { name: "react", color: "blue-text-gradient" },
+      { name: "nodejs", color: "green-text-gradient" },
+      { name: "mongodb", color: "pink-text-gradient" },
     ],
-    image: Kalkulator,
-    video: videoKalkulator,
-    source_code_link: "https://github.com/Silaenn/calculator",
-  },
-  // {
-  //   name: "Course Web",
-  //   description:
-  //     "Improve your skills with thousands of quality courses from experts on our online learning platform. Enjoy complete materials, learning videos, assignments and certificates at affordable prices. You can also interact with instructors and other students through the discussion forums provided.",
-  //   tags: [
-  //     {
-  //       name: "react",
-  //       color: "blue-text-gradient",
-  //     },
-  //     {
-  //       name: "bootstrap",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-  //   image: Course,
-  //   video: videoShop,
-  //   source_code_link: "https://github.com/Silaenn/React-website-course",
-  // },
-  {
-    name: "E-Commerce",
-    description:
-      "This project is an e-commerce platform designed to provide a modern, fast, and responsive online shopping experience. The website allows users to browse various products, add items to cart, make payment transactions and provides a seamless and intuitive shopping experience",
-    tags: [
-      {
-        name: "nextjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "strapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwand",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: shop,
-    video: videoCourse,
-    source_code_link: "https://github.com/Silaenn/e-commerce",
+    image: "https://placehold.co/600x400/16213e/00D4FF?text=ShopWave",
+    source_code_link: "https://github.com",
   },
   {
-    name: "Jejak Pancasila",
+    name: "TaskFlow",
     description:
-      "Jejak Pancasila is a 2D scrolling pixel art game inspired by classic games like Life is a Game, where you embark on a journey through three significant stages of life: elementary school (SD), high school (SMA), and adulthood as a working professional",
+      "A project management application featuring real-time collaboration, Kanban boards, task tracking, and team analytics dashboard.",
     tags: [
-      {
-        name: "Unity",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Pixel studio",
-        color: "green-text-gradient",
-      },
+      { name: "nextjs", color: "blue-text-gradient" },
+      { name: "typescript", color: "green-text-gradient" },
+      { name: "tailwind", color: "pink-text-gradient" },
     ],
-    image: JejakPancasila,
-    video: VidJejakPancasila,
-    source_code_link: "https://github.com/Silaenn/EdukatifDev",
+    image: "https://placehold.co/600x400/16213e/FF6B9D?text=TaskFlow",
+    source_code_link: "https://github.com",
   },
   {
-    name: "Flap of Fear",
+    name: "PixelForge",
     description:
-      "Fly in the dark and avoid scary obstacles in Flappy Bird of Terror! This game is a horror interpretation of the classic game Flappy Bird, where players control a scary bird in a world filled with dark and eerie elements.",
+      "An online image editor with layers, filters, drawing tools, and export capabilities built using the Canvas API and WebAssembly.",
     tags: [
-      {
-        name: "Unity",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Pixel studio",
-        color: "green-text-gradient",
-      },
+      { name: "react", color: "blue-text-gradient" },
+      { name: "javascript", color: "green-text-gradient" },
     ],
-    image: FlapofFear,
-    // video: FlapofFear,
-    source_code_link: "https://github.com/Silaenn/FlappyBird-versi-",
+    image: "https://placehold.co/600x400/16213e/FFD700?text=PixelForge",
+    source_code_link: "https://github.com",
   },
   {
-    name: "Highway Hustle",
+    name: "ChatSync",
     description:
-      "Are you ready to embark on an adrenaline-pumping journey down the highway? Highway Hustle is a thrilling top-down mobile driving game that challenges your reflexes and decision-making skills.",
+      "A real-time messaging application with group chats, file sharing, message encryption, and cross-platform support using WebSockets.",
     tags: [
-      {
-        name: "Unity",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Adobe Illustrator",
-        color: "green-text-gradient",
-      },
+      { name: "react", color: "blue-text-gradient" },
+      { name: "nodejs", color: "green-text-gradient" },
+      { name: "mongodb", color: "pink-text-gradient" },
     ],
-    image: HighwayHustle,
-    // video: FlapofFear,
-    source_code_link: "https://github.com/Silaenn/Catch-the-Coins",
+    image: "https://placehold.co/600x400/16213e/00D4FF?text=ChatSync",
+    source_code_link: "https://github.com",
   },
-  {
-    name: "Shooting Gallery",
-    description:
-      "Get ready for a thrilling 2D shooting experience with Shooting Gallery! Step right up to the carnival-inspired range, take aim, and test your sharpshooting skills in this fast-paced, action-packed game.",
-    tags: [
-      {
-        name: "Unity",
-        color: "blue-text-gradient",
-      },
-    ],
-    image: Shoot,
-    // video: FlapofFear,
-    source_code_link: "https://github.com/Silaenn/ShootingGallery",
-  },
-  // {
-  //   name: "Royal Run",
-  //   description:
-  //     "",
-  //   tags: [
-  //     {
-  //       name: "Unity",
-  //       color: "blue-text-gradient",
-  //     },
-  //   ],
-  //   // image: RoyalRun,
-  //   // video: FlapofFear,
-  //   // source_code_link: "https://github.com/Silaenn/RoyalRun",
-  // },
 ];
 
 const handleClick = (e) => {
