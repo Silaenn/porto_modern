@@ -1,4 +1,83 @@
 import React, { useState, useRef, useCallback } from "react";
+import { motion } from "framer-motion";
+
+const MIN_BTN = (
+  <svg width="10" height="10" viewBox="0 0 10 10" style={{display: "block"}}>
+    <rect x="1" y="7" width="8" height="2" fill="#000" />
+  </svg>
+);
+
+const MAX_BTN = (
+  <svg width="10" height="10" viewBox="0 0 10 10" style={{display: "block"}}>
+    <rect x="1" y="1" width="8" height="8" fill="none" stroke="#000" strokeWidth="1.5" />
+  </svg>
+);
+
+const RESTORE_BTN = (
+  <svg width="10" height="10" viewBox="0 0 10 10" style={{display: "block"}}>
+    <rect x="3" y="0" width="7" height="7" fill="#C0C0C0" stroke="#000" strokeWidth="1" />
+    <rect x="0" y="3" width="7" height="7" fill="#C0C0C0" stroke="#000" strokeWidth="1" />
+  </svg>
+);
+
+const CLOSE_BTN = (
+  <svg width="10" height="10" viewBox="0 0 10 10" style={{display: "block"}}>
+    <line x1="1" y1="1" x2="9" y2="9" stroke="#000" strokeWidth="1.5" />
+    <line x1="9" y1="1" x2="1" y2="9" stroke="#000" strokeWidth="1.5" />
+  </svg>
+);
+
+const Btn = ({ children, onClick, onMouseDown }) => (
+  <button
+    className="win-btn"
+    style={{
+      width: "21px",
+      height: "21px",
+      background: "#C0C0C0",
+      border: "1px solid #808080",
+      borderTop: "1px solid #FFF",
+      borderLeft: "1px solid #FFF",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      padding: 0,
+    }}
+    onClick={onClick}
+    onMouseDown={onMouseDown}
+  >
+    {children}
+  </button>
+);
+
+const RESIZE_GRIP = (
+  <div
+    style={{
+      position: "absolute",
+      bottom: "0",
+      right: "0",
+      width: "14px",
+      height: "14px",
+      cursor: "se-resize",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "flex-end",
+      justifyContent: "flex-end",
+      padding: "1px",
+      gap: "1px",
+    }}
+    className="resize-grip"
+  >
+    <svg width="12" height="12" viewBox="0 0 12 12">
+      <line x1="8" y1="12" x2="12" y2="8" stroke="#808080" strokeWidth="1" />
+      <line x1="5" y1="12" x2="12" y2="5" stroke="#808080" strokeWidth="1" />
+      <line x1="8" y1="12" x2="12" y2="8" stroke="#FFF" strokeWidth="0.5" transform="translate(0.5, -0.5)" />
+      <line x1="5" y1="12" x2="12" y2="5" stroke="#FFF" strokeWidth="0.5" transform="translate(0.5, -0.5)" />
+      <line x1="10" y1="12" x2="12" y2="10" stroke="#808080" strokeWidth="1" />
+      <line x1="10" y1="12" x2="12" y2="10" stroke="#FFF" strokeWidth="0.5" transform="translate(0.5, -0.5)" />
+    </svg>
+  </div>
+);
 
 const Window = ({
   title,
@@ -9,6 +88,11 @@ const Window = ({
   children,
   defaultPosition = { x: 100, y: 100 },
   defaultSize = { width: 600, height: 400 },
+  initial,
+  animate,
+  exit,
+  transition,
+  style: externalStyle,
 }) => {
   const [position, setPosition] = useState(defaultPosition);
   const [size, setSize] = useState(defaultSize);
@@ -99,16 +183,31 @@ const Window = ({
 
   if (isMinimized) return null;
 
+  const titleBarGrad = isFocused
+    ? "linear-gradient(90deg, #000080 0%, #1084D0 100%)"
+    : "linear-gradient(90deg, #808080 0%, #B0B0B0 100%)";
+
+  const rootProps = {
+    className: "absolute",
+    style: {
+      left: position.x,
+      top: position.y,
+      width: isMaximized ? "100vw" : size.width,
+      height: isMaximized ? "calc(100vh - 50px)" : size.height,
+      ...externalStyle,
+    },
+  };
+
+  const Root = initial ? motion.div : "div";
+  if (initial) {
+    rootProps.initial = initial;
+    rootProps.animate = animate;
+    rootProps.exit = exit;
+    rootProps.transition = transition;
+  }
+
   return (
-    <div
-      className="absolute"
-      style={{
-        left: position.x,
-        top: position.y,
-        width: isMaximized ? "100vw" : size.width,
-        height: isMaximized ? "calc(100vh - 50px)" : size.height,
-      }}
-    >
+    <Root {...rootProps}>
       <div
         className="flex flex-col h-full select-none"
         style={{
@@ -121,7 +220,7 @@ const Window = ({
         <div
           className="flex items-center px-1 py-0.5 cursor-default"
           style={{
-            background: "linear-gradient(90deg, #000080 0%, #1084D0 100%)",
+            background: titleBarGrad,
             height: "28px",
             minHeight: "28px",
           }}
@@ -131,76 +230,26 @@ const Window = ({
             <span className="flex items-center mr-1.5 ml-0.5">{icon}</span>
           )}
           <span
-            className="text-white text-sm font-bold flex-1 truncate"
-            style={{ fontFamily: "Tahoma, sans-serif", fontSize: "12px" }}
+            className="text-sm font-bold flex-1 truncate"
+            style={{
+              fontFamily: "Tahoma, sans-serif",
+              fontSize: "12px",
+              color: isFocused ? "#FFF" : "#DDD",
+            }}
           >
             {title}
           </span>
 
           <div className="flex gap-1">
-            <button
-              className="win-btn text-xs flex items-center justify-center"
-              style={{
-                width: "21px",
-                height: "21px",
-                background: "#C0C0C0",
-                border: "1px solid #808080",
-                borderTop: "1px solid #FFF",
-                borderLeft: "1px solid #FFF",
-                fontSize: "10px",
-                fontWeight: "bold",
-                fontFamily: "Tahoma, sans-serif",
-                cursor: "pointer",
-                padding: 0,
-                lineHeight: "1",
-              }}
-              onClick={() => setIsMinimized(true)}
-              onMouseDown={(e) => e.stopPropagation()}
-            >
-              _
-            </button>
-            <button
-              className="win-btn text-xs flex items-center justify-center"
-              style={{
-                width: "21px",
-                height: "21px",
-                background: "#C0C0C0",
-                border: "1px solid #808080",
-                borderTop: "1px solid #FFF",
-                borderLeft: "1px solid #FFF",
-                fontSize: "10px",
-                fontWeight: "bold",
-                fontFamily: "Tahoma, sans-serif",
-                cursor: "pointer",
-                padding: 0,
-                lineHeight: "1",
-              }}
-              onClick={handleMaximize}
-              onMouseDown={(e) => e.stopPropagation()}
-            >
-              {isMaximized ? "\u2296" : "\u25A1"}
-            </button>
-            <button
-              className="win-btn text-xs flex items-center justify-center"
-              style={{
-                width: "21px",
-                height: "21px",
-                background: "#C0C0C0",
-                border: "1px solid #808080",
-                borderTop: "1px solid #FFF",
-                borderLeft: "1px solid #FFF",
-                fontSize: "10px",
-                fontWeight: "bold",
-                fontFamily: "Tahoma, sans-serif",
-                cursor: "pointer",
-                padding: 0,
-                lineHeight: "1",
-              }}
-              onClick={onClose}
-              onMouseDown={(e) => e.stopPropagation()}
-            >
-              ✕
-            </button>
+            <Btn onClick={() => setIsMinimized(true)} onMouseDown={(e) => e.stopPropagation()}>
+              {MIN_BTN}
+            </Btn>
+            <Btn onClick={handleMaximize} onMouseDown={(e) => e.stopPropagation()}>
+              {isMaximized ? RESTORE_BTN : MAX_BTN}
+            </Btn>
+            <Btn onClick={onClose} onMouseDown={(e) => e.stopPropagation()}>
+              {CLOSE_BTN}
+            </Btn>
           </div>
         </div>
 
@@ -215,13 +264,16 @@ const Window = ({
           {children}
         </div>
 
-        <div
-          className="h-1 cursor-se-resize"
-          style={{ background: "#C0C0C0" }}
-          onMouseDown={handleResizeMouseDown}
-        />
+        {!isMaximized && (
+          <div
+            style={{ position: "relative", height: "14px", background: "#C0C0C0" }}
+            onMouseDown={handleResizeMouseDown}
+          >
+            {RESIZE_GRIP}
+          </div>
+        )}
       </div>
-    </div>
+    </Root>
   );
 };
 

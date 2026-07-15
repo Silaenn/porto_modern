@@ -1,15 +1,15 @@
 import React from "react";
-import {
-  FileText, Briefcase, Settings, Folder, Mail, Monitor,
-} from "lucide-react";
+import { FileText, Briefcase, SettingsCog, Folder, Mail, Monitor } from "pixelarticons/react";
 
 const withSize = (Icon, defaultSize = 32) => ({ size }) => (
-  <Icon size={size || defaultSize} />
+  <span style={{ color: "#FFF", display: "inline-flex" }}>
+    <Icon width={size || defaultSize} height={size || defaultSize} />
+  </span>
 );
 
 export const NoteIcon = withSize(FileText);
 export const BriefcaseIcon = withSize(Briefcase);
-export const GearIcon = withSize(Settings);
+export const GearIcon = withSize(SettingsCog);
 export const FolderIcon = withSize(Folder);
 export const MailIcon = withSize(Mail);
 export const ComputerIcon = withSize(Monitor);

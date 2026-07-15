@@ -14,6 +14,13 @@ const Taskbar = ({ openWindows, activeWindow, onWindowClick, onStartClick }) => 
     hour12: true,
   });
 
+  const dateStr = clock.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
   return (
     <div
       className="fixed bottom-0 left-0 right-0 z-[9999] flex items-center"
@@ -83,6 +90,7 @@ const Taskbar = ({ openWindows, activeWindow, onWindowClick, onStartClick }) => 
           borderRight: "1px solid #FFF",
           minWidth: "80px",
         }}
+        title={dateStr}
       >
         <span className="text-xs w-full text-right" style={{fontSize: "11px"}}>
           {timeStr}

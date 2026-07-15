@@ -21,13 +21,22 @@ body {
   border-left: 1px solid #808080 !important;
   border-bottom: 1px solid #FFF !important;
   border-right: 1px solid #FFF !important;
-  padding-top: 1px;
-  padding-left: 1px;
+  padding: 1px 0 0 1px;
 }
 
-/* Scrollbar styles for Windows content */
+.resize-grip {
+  cursor: se-resize;
+}
+
+/* Win98-style scrollbar */
 ::-webkit-scrollbar {
-  width: 16px;
+  width: 18px;
+  height: 18px;
+}
+
+::-webkit-scrollbar-track {
+  background: #808080;
+  border-left: 1px solid #808080;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -41,11 +50,56 @@ body {
   background: #D4D4D4;
 }
 
-::-webkit-scrollbar-track {
-  background: #808080;
+::-webkit-scrollbar-button {
+  display: block;
+  height: 18px;
+  width: 18px;
+  background: #C0C0C0;
+  border: 1px solid #808080;
+  border-top: 1px solid #FFF;
+  border-left: 1px solid #FFF;
 }
 
-/* Line clamp utility */
+::-webkit-scrollbar-button:hover {
+  background: #D4D4D4;
+}
+
+::-webkit-scrollbar-button:active {
+  background: #A0A0A0;
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
+  border-bottom: 1px solid #FFF;
+  border-right: 1px solid #FFF;
+}
+
+::-webkit-scrollbar-button:vertical:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpolygon points='5,2 9,8 1,8' fill='%23000'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+::-webkit-scrollbar-button:vertical:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpolygon points='5,8 9,2 1,2' fill='%23000'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+::-webkit-scrollbar-button:horizontal:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpolygon points='2,5 8,1 8,9' fill='%23000'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+::-webkit-scrollbar-button:horizontal:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpolygon points='8,5 2,1 2,9' fill='%23000'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+::-webkit-scrollbar-corner {
+  background: #C0C0C0;
+}
+
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;

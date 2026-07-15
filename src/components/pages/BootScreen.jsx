@@ -121,15 +121,7 @@ const BootScreen = ({ onFinish }) => {
               </h1>
             </motion.div>
 
-            <div
-              className="mx-auto"
-              style={{
-                padding: "6px 20px",
-                background: "#0a0a0a",
-                border: "2px solid #333",
-                borderRadius: "2px",
-              }}
-            >
+            <div className="mx-auto inline-block" style={{ background: "#0a0a0a", border: "2px solid #333", borderRadius: "2px", padding: "6px 4px" }}>
               <BlockBar progress={progress} />
             </div>
 

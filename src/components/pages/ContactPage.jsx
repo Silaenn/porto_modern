@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Mail, Send, Paperclip, Bold, Italic, Underline } from "lucide-react";
+import Win98Dialog from "../Win98Dialog";
 
 const ContactPage = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
+  const [dialogMsg, setDialogMsg] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -14,7 +17,8 @@ const ContactPage = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      alert("Message sent successfully!");
+      setDialogMsg("Your message has been sent successfully!");
+      setShowDialog(true);
       setForm({ name: "", email: "", message: "" });
     }, 1000);
   };
@@ -29,6 +33,13 @@ const ContactPage = () => {
         fontSize: "12px",
       }}
     >
+      <Win98Dialog
+        open={showDialog}
+        title="Message"
+        message={dialogMsg}
+        onClose={() => setShowDialog(false)}
+      />
+
       <div className="bg-gray-300 border-b border-gray-400 px-2 py-1 flex items-center gap-2 text-xs">
         <Mail className="w-3 h-3 text-blue-800" />
         <span className="text-black font-bold">New Message</span>

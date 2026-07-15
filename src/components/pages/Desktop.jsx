@@ -37,6 +37,7 @@ const appComponents = {
 const Desktop = () => {
   const [openWindows, setOpenWindows] = useState([]);
   const [activeWindow, setActiveWindow] = useState(null);
+  const [selectedIcon, setSelectedIcon] = useState(null);
   const [zCounter, setZCounter] = useState(100);
   const [showStartMenu, setShowStartMenu] = useState(false);
 
@@ -47,6 +48,7 @@ const Desktop = () => {
 
   const openApp = useCallback(
     (id) => {
+      setSelectedIcon(null);
       setShowStartMenu(false);
       if (!openWindows.find((w) => w.id === id)) {
         const app = desktopApps.find((a) => a.id === id);
@@ -66,12 +68,9 @@ const Desktop = () => {
     setActiveWindow((prev) => (prev === id ? null : prev));
   }, []);
 
-  const handleWindowClick = useCallback(
-    (id) => {
-      focusWindow(id);
-    },
-    [focusWindow]
-  );
+  const handleWindowClick = useCallback((id) => {
+    focusWindow(id);
+  }, [focusWindow]);
 
   const getWindowPosition = (id) => ({
     about: { x: 60, y: 40 },
@@ -105,6 +104,7 @@ const Desktop = () => {
         backgroundImage: `radial-gradient(circle at 20% 30%, rgba(0,255,255,0.08) 0%, transparent 50%),
                           radial-gradient(circle at 80% 70%, rgba(255,107,157,0.08) 0%, transparent 50%)`,
       }}
+      onClick={() => setSelectedIcon(null)}
     >
       {desktopPositions.map(({ id, left, top }) => {
         const app = desktopApps.find((a) => a.id === id);
@@ -114,6 +114,8 @@ const Desktop = () => {
             <DesktopIcon
               icon={<IconCmp size={32} />}
               label={app.label}
+              selected={selectedIcon === id}
+              onClick={() => setSelectedIcon(selectedIcon === id ? null : id)}
               onDoubleClick={() => openApp(id)}
             />
           </div>
@@ -125,26 +127,23 @@ const Desktop = () => {
           const Component = appComponents[w.id];
           const zIndex = activeWindow === w.id ? 1000 + zCounter : 999;
           return (
-            <motion.div
+            <Window
               key={w.id}
+              title={w.title}
+              icon={<w.iconCmp size={16} />}
+              isFocused={activeWindow === w.id}
+              onFocus={() => focusWindow(w.id)}
+              onClose={() => closeWindow(w.id)}
+              defaultPosition={getWindowPosition(w.id)}
+              defaultSize={getWindowSize(w.id)}
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.92 }}
               transition={{ duration: 0.15, ease: "easeOut" }}
-              style={{ position: "absolute", inset: 0, zIndex }}
+              style={{ zIndex }}
             >
-              <Window
-                title={w.title}
-                icon={<w.iconCmp size={16} />}
-                isFocused={activeWindow === w.id}
-                onFocus={() => focusWindow(w.id)}
-                onClose={() => closeWindow(w.id)}
-                defaultPosition={getWindowPosition(w.id)}
-                defaultSize={getWindowSize(w.id)}
-              >
-                <Component />
-              </Window>
-            </motion.div>
+              <Component />
+            </Window>
           );
         })}
       </AnimatePresence>
@@ -216,6 +215,30 @@ const Desktop = () => {
                   })}
 
                   <div className="border-t border-gray-400 my-1 mx-2" />
+
+                  <button
+                    className="w-full flex items-center gap-2 px-2 py-1.5 text-left hover:bg-blue-800 hover:text-white cursor-pointer"
+                    style={{
+                      fontFamily: "Tahoma, sans-serif",
+                      fontSize: "12px",
+                      border: "none",
+                      background: "transparent",
+                      color: "#000",
+                    }}
+                    onClick={() => {
+                      setShowStartMenu(false);
+                      if (confirm("Shut down the computer?")) {
+                        window.location.reload();
+                      }
+                    }}
+                  >
+                    <svg width="20" height="20" viewBox="0 0 32 32" style={{imageRendering: "pixelated"}}>
+                      <circle cx="16" cy="16" r="13" fill="none" stroke="#000" strokeWidth="2" />
+                      <rect x="14" y="4" width="4" height="10" fill="#000" />
+                      <circle cx="16" cy="21" r="2" fill="#000" />
+                    </svg>
+                    <span>Shut Down...</span>
+                  </button>
                 </div>
               </div>
             </motion.div>

@@ -1,20 +1,34 @@
 import React from "react";
 
-const DesktopIcon = ({ icon, label, onDoubleClick }) => {
+const DesktopIcon = ({ icon, label, selected, onClick, onDoubleClick }) => {
+  const handleClick = (e) => {
+    e.stopPropagation();
+    onClick();
+  };
+
+  const handleDoubleClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onDoubleClick();
+  };
+
   return (
     <div
       className="flex flex-col items-center w-20 cursor-pointer"
-      onDoubleClick={(e) => { e.preventDefault(); onDoubleClick(); }}
+      onClick={handleClick}
+      onDoubleClick={handleDoubleClick}
     >
       <div className="w-14 h-14 flex items-center justify-center mb-1">
         {icon}
       </div>
       <span
-        className="text-white text-xs text-center px-1 py-0.5 rounded group-hover:bg-blue-900/50 group-active:bg-blue-800/70 truncate max-w-full"
+        className="text-xs text-center px-1 py-0.5 truncate max-w-full"
         style={{
           fontFamily: "Tahoma, sans-serif",
           fontSize: "11px",
-          textShadow: "1px 1px 2px rgba(0,0,0,0.8)",
+          color: selected ? "#FFF" : "#FFF",
+          background: selected ? "rgba(0,0,128,0.6)" : "transparent",
+          border: selected ? "1px dotted rgba(255,255,255,0.5)" : "1px solid transparent",
         }}
       >
         {label}
