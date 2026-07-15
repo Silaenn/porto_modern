@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Window from "./Window";
 import DesktopIcon from "./DesktopIcon";
 import Taskbar from "./Taskbar";
@@ -109,10 +110,7 @@ const Desktop = () => {
         const app = desktopApps.find((a) => a.id === id);
         const IconCmp = iconComponents[app.iconName];
         return (
-          <div
-            key={id}
-            style={{ position: "absolute", left, top }}
-          >
+          <div key={id} style={{ position: "absolute", left, top }}>
             <DesktopIcon
               icon={<IconCmp size={32} />}
               label={app.label}
@@ -122,25 +120,34 @@ const Desktop = () => {
         );
       })}
 
-      {openWindows.map((w) => {
-        const Component = appComponents[w.id];
-        const zIndex = activeWindow === w.id ? 1000 + zCounter : 999;
-        return (
-          <Window
-            key={w.id}
-            title={w.title}
-            icon={<w.iconCmp size={16} />}
-            isFocused={activeWindow === w.id}
-            onFocus={() => focusWindow(w.id)}
-            onClose={() => closeWindow(w.id)}
-            defaultPosition={getWindowPosition(w.id)}
-            defaultSize={getWindowSize(w.id)}
-            zIndex={zIndex}
-          >
-            <Component />
-          </Window>
-        );
-      })}
+      <AnimatePresence>
+        {openWindows.map((w) => {
+          const Component = appComponents[w.id];
+          const zIndex = activeWindow === w.id ? 1000 + zCounter : 999;
+          return (
+            <motion.div
+              key={w.id}
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.92 }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
+              style={{ position: "absolute", inset: 0, zIndex }}
+            >
+              <Window
+                title={w.title}
+                icon={<w.iconCmp size={16} />}
+                isFocused={activeWindow === w.id}
+                onFocus={() => focusWindow(w.id)}
+                onClose={() => closeWindow(w.id)}
+                defaultPosition={getWindowPosition(w.id)}
+                defaultSize={getWindowSize(w.id)}
+              >
+                <Component />
+              </Window>
+            </motion.div>
+          );
+        })}
+      </AnimatePresence>
 
       <Taskbar
         openWindows={openWindows}
@@ -149,66 +156,72 @@ const Desktop = () => {
         onStartClick={() => setShowStartMenu(!showStartMenu)}
       />
 
-      {showStartMenu && (
-        <>
-          <div
-            className="fixed inset-0 z-[9998]"
-            onClick={() => setShowStartMenu(false)}
-          />
-          <div
-            className="fixed z-[9999]"
-            style={{
-              bottom: "40px",
-              left: "0",
-              background: "#C0C0C0",
-              border: "2px solid #808080",
-              borderTop: "2px solid #FFF",
-              borderLeft: "2px solid #FFF",
-              minWidth: "200px",
-              boxShadow: "2px -2px 5px rgba(0,0,0,0.3)",
-            }}
-          >
-            <div className="flex" style={{ minHeight: "300px" }}>
-              <div
-                className="flex flex-col items-center py-2 px-1"
-                style={{
-                  background: "linear-gradient(0deg, #000080 0%, #1084D0 100%)",
-                  width: "24px",
-                }}
-              >
-                <span className="text-white text-xs font-bold" style={{ writingMode: "vertical-rl", textOrientation: "mixed", fontSize: "10px", fontFamily: "Tahoma, sans-serif" }}>
-                  Windows98
-                </span>
-              </div>
+      <AnimatePresence>
+        {showStartMenu && (
+          <>
+            <div
+              className="fixed inset-0 z-[9998]"
+              onClick={() => setShowStartMenu(false)}
+            />
+            <motion.div
+              className="fixed z-[9999]"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 20, opacity: 0 }}
+              transition={{ duration: 0.12, ease: "easeOut" }}
+              style={{
+                bottom: "40px",
+                left: "0",
+                background: "#C0C0C0",
+                border: "2px solid #808080",
+                borderTop: "2px solid #FFF",
+                borderLeft: "2px solid #FFF",
+                minWidth: "200px",
+                boxShadow: "2px -2px 5px rgba(0,0,0,0.3)",
+              }}
+            >
+              <div className="flex" style={{ minHeight: "300px" }}>
+                <div
+                  className="flex flex-col items-center py-2 px-1"
+                  style={{
+                    background: "linear-gradient(0deg, #000080 0%, #1084D0 100%)",
+                    width: "24px",
+                  }}
+                >
+                  <span className="text-white text-xs font-bold" style={{ writingMode: "vertical-rl", textOrientation: "mixed", fontSize: "10px", fontFamily: "Tahoma, sans-serif" }}>
+                    Windows98
+                  </span>
+                </div>
 
-              <div className="flex-1 py-1">
-                {desktopApps.map((app) => {
-                  const IconCmp = iconComponents[app.iconName];
-                  return (
-                    <button
-                      key={app.id}
-                      className="w-full flex items-center gap-2 px-2 py-1.5 text-left hover:bg-blue-800 hover:text-white cursor-pointer"
-                      style={{
-                        fontFamily: "Tahoma, sans-serif",
-                        fontSize: "12px",
-                        border: "none",
-                        background: "transparent",
-                        color: "#000",
-                      }}
-                      onClick={() => openApp(app.id)}
-                    >
-                      <IconCmp size={20} />
-                      <span>{app.title}</span>
-                    </button>
-                  );
-                })}
+                <div className="flex-1 py-1">
+                  {desktopApps.map((app) => {
+                    const IconCmp = iconComponents[app.iconName];
+                    return (
+                      <button
+                        key={app.id}
+                        className="w-full flex items-center gap-2 px-2 py-1.5 text-left hover:bg-blue-800 hover:text-white cursor-pointer"
+                        style={{
+                          fontFamily: "Tahoma, sans-serif",
+                          fontSize: "12px",
+                          border: "none",
+                          background: "transparent",
+                          color: "#000",
+                        }}
+                        onClick={() => openApp(app.id)}
+                      >
+                        <IconCmp size={20} />
+                        <span>{app.title}</span>
+                      </button>
+                    );
+                  })}
 
-                <div className="border-t border-gray-400 my-1 mx-2" />
+                  <div className="border-t border-gray-400 my-1 mx-2" />
+                </div>
               </div>
-            </div>
-          </div>
-        </>
-      )}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

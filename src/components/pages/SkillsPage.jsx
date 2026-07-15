@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   FileCode, PaintBucket, FileJson, FileType,
   Atom, Wind, Server, Database,
   FileSymlink, Container, PenTool, GitBranch, Box,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const skillCategories = [
   {
@@ -36,11 +37,50 @@ const skillCategories = [
   },
 ];
 
+const SkillRow = ({ skill, animate }) => {
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    if (animate) {
+      const raf = requestAnimationFrame(() => {
+        requestAnimationFrame(() => setWidth(skill.level));
+      });
+      return () => cancelAnimationFrame(raf);
+    }
+  }, [animate, skill.level]);
+
+  return (
+    <div className="flex items-center gap-3 px-3 py-2">
+      <skill.icon className="w-5 h-5 text-blue-800 flex-shrink-0" />
+      <div className="flex-1 min-w-0">
+        <div className="flex justify-between text-xs text-black">
+          <span className="font-medium">{skill.name}</span>
+          <span className="text-gray-600">{skill.level}%</span>
+        </div>
+        <div className="mt-1 h-3 bg-gray-400 border border-gray-500 overflow-hidden">
+          <div
+            className="h-full transition-all duration-700 ease-out"
+            style={{
+              width: `${width}%`,
+              background: skill.level > 85
+                ? "linear-gradient(90deg, #000080, #1084D0)"
+                : "linear-gradient(90deg, #006000, #00A000)",
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const SkillsPage = () => {
   const [expanded, setExpanded] = useState({});
+  const activated = useRef({});
 
   const toggle = (catName) => {
-    setExpanded((prev) => ({ ...prev, [catName]: !prev[catName] }));
+    const next = !expanded[catName];
+    if (next) activated.current[catName] = true;
+    setExpanded((prev) => ({ ...prev, [catName]: next }));
   };
 
   return (
@@ -75,32 +115,28 @@ const SkillsPage = () => {
               <span className="text-white/70 ml-auto text-[10px]">{cat.skills.length} devices</span>
             </button>
 
-            {(expanded[cat.name] ?? true) && (
-              <div className="divide-y divide-gray-400">
-                {cat.skills.map((skill) => (
-                  <div key={skill.name} className="flex items-center gap-3 px-3 py-2">
-                    <skill.icon className="w-5 h-5 text-blue-800 flex-shrink-0" />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex justify-between text-xs text-black">
-                        <span className="font-medium">{skill.name}</span>
-                        <span className="text-gray-600">{skill.level}%</span>
-                      </div>
-                      <div className="mt-1 h-3 bg-gray-400 border border-gray-500 overflow-hidden">
-                        <div
-                          className="h-full"
-                          style={{
-                            width: `${skill.level}%`,
-                            background: skill.level > 85
-                              ? "linear-gradient(90deg, #000080, #1084D0)"
-                              : "linear-gradient(90deg, #006000, #00A000)",
-                          }}
-                        />
-                      </div>
-                    </div>
+            <AnimatePresence initial={false}>
+              {(expanded[cat.name] ?? true) && (
+                <motion.div
+                  key="content"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="divide-y divide-gray-400">
+                    {cat.skills.map((skill) => (
+                      <SkillRow
+                        key={skill.name}
+                        skill={skill}
+                        animate={!!activated.current[cat.name]}
+                      />
+                    ))}
                   </div>
-                ))}
-              </div>
-            )}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         ))}
       </div>

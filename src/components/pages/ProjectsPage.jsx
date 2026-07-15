@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { projects } from "../../constants";
 import { FolderIcon, ComputerIcon } from "../DesktopAppIcons";
-import { ExternalLink, Calendar } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const ProjectsPage = () => {
   const [selected, setSelected] = useState(null);
