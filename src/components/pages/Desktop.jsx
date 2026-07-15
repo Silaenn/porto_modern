@@ -260,7 +260,7 @@ const Desktop = () => {
                         }}
                         onClick={() => openApp(app.id)}
                       >
-                        <IconCmp size={20} />
+                        <IconCmp size={20} color="#000" />
                         <span>{app.title}</span>
                       </button>
                     );
@@ -289,7 +289,7 @@ const Desktop = () => {
                       <rect x="14" y="4" width="4" height="10" fill="#000" />
                       <circle cx="16" cy="21" r="2" fill="#000" />
                     </svg>
-                    <span>Shut Down...</span>
+                    <span>Shut Down</span>
                   </button>
                 </div>
               </div>
