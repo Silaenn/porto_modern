@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const MIN_BTN = (
@@ -83,6 +83,7 @@ const Window = ({
   title,
   icon,
   onClose,
+  onMinimize,
   isFocused,
   onFocus,
   children,
@@ -98,7 +99,8 @@ const Window = ({
   const [size, setSize] = useState(defaultSize);
   const [isDragging, setIsDragging] = useState(false);
   const [isResizing, setIsResizing] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [isMinimizing, setIsMinimizing] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
   const [maximizedState, setMaximizedState] = useState(null);
   const dragRef = useRef({ startX: 0, startY: 0, startPosX: 0, startPosY: 0 });
@@ -146,6 +148,43 @@ const Window = ({
     setIsResizing(false);
   }, []);
 
+  const handleResizeMouseDown = useCallback(
+    (e) => {
+      e.stopPropagation();
+      onFocus();
+      setIsResizing(true);
+      resizeRef.current = {
+        startX: e.clientX,
+        startY: e.clientY,
+        startW: size.width,
+        startH: size.height,
+      };
+    },
+    [size, onFocus]
+  );
+
+  useEffect(() => {
+    if (isDragging || isResizing) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
+    }
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isDragging, isResizing, handleMouseMove, handleMouseUp]);
+
+  const handleMinimize = () => {
+    if (onMinimize) {
+      setIsMinimizing(true);
+      setTimeout(() => {
+        onMinimize();
+        setIsMinimizing(false);
+        setIsHidden(true);
+      }, 200);
+    }
+  };
+
   const handleMaximize = () => {
     if (isMaximized) {
       setPosition(maximizedState.position);
@@ -159,57 +198,32 @@ const Window = ({
     }
   };
 
-  const handleResizeMouseDown = useCallback((e) => {
-    e.stopPropagation();
-    setIsResizing(true);
-    resizeRef.current = {
-      startX: e.clientX,
-      startY: e.clientY,
-      startW: size.width,
-      startH: size.height,
-    };
-  }, [size]);
-
-  React.useEffect(() => {
-    if (isDragging || isResizing) {
-      window.addEventListener("mousemove", handleMouseMove);
-      window.addEventListener("mouseup", handleMouseUp);
-    }
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
-    };
-  }, [isDragging, isResizing, handleMouseMove, handleMouseUp]);
-
-  if (isMinimized) return null;
+  if (isHidden) return null;
 
   const titleBarGrad = isFocused
     ? "linear-gradient(90deg, #000080 0%, #1084D0 100%)"
     : "linear-gradient(90deg, #808080 0%, #B0B0B0 100%)";
 
-  const rootProps = {
-    className: "absolute",
-    style: {
-      left: position.x,
-      top: position.y,
-      width: isMaximized ? "100vw" : size.width,
-      height: isMaximized ? "calc(100vh - 50px)" : size.height,
-      ...externalStyle,
-    },
-  };
+  const animProps = isMinimizing
+    ? { animate: { opacity: 0, scale: 0.3, y: 300 }, transition: { duration: 0.2, ease: "easeIn" } }
+    : { initial, animate, exit, transition };
 
-  const Root = initial ? motion.div : "div";
-  if (initial) {
-    rootProps.initial = initial;
-    rootProps.animate = animate;
-    rootProps.exit = exit;
-    rootProps.transition = transition;
-  }
+  const Root = (initial || isMinimizing) ? motion.div : "div";
 
   return (
-    <Root {...rootProps}>
+    <Root
+      className="absolute"
+      style={{
+        left: position.x,
+        top: position.y,
+        width: isMaximized ? "100vw" : size.width,
+        height: isMaximized ? "calc(100vh - 50px)" : size.height,
+        ...externalStyle,
+      }}
+      {...animProps}
+    >
       <div
-        className="flex flex-col h-full select-none"
+        className="flex flex-col h-full select-none overflow-hidden"
         style={{
           boxShadow: "2px 2px 10px rgba(0,0,0,0.5)",
           border: "2px solid #808080",
@@ -241,7 +255,7 @@ const Window = ({
           </span>
 
           <div className="flex gap-1">
-            <Btn onClick={() => setIsMinimized(true)} onMouseDown={(e) => e.stopPropagation()}>
+            <Btn onClick={handleMinimize} onMouseDown={(e) => e.stopPropagation()}>
               {MIN_BTN}
             </Btn>
             <Btn onClick={handleMaximize} onMouseDown={(e) => e.stopPropagation()}>

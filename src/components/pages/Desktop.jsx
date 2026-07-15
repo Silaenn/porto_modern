@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Window from "./Window";
 import DesktopIcon from "./DesktopIcon";
@@ -8,12 +8,12 @@ import ExperiencePage from "./ExperiencePage";
 import SkillsPage from "./SkillsPage";
 import ProjectsPage from "./ProjectsPage";
 import ContactPage from "./ContactPage";
-import { NoteIcon, BriefcaseIcon, GearIcon, FolderIcon, MailIcon } from "../DesktopAppIcons";
+import { NoteIcon, BriefcaseIcon, TerminalIcon, FolderIcon, MailIcon } from "../DesktopAppIcons";
 
 const desktopApps = [
   { id: "about", iconName: "note", label: "About Me", title: "About Me" },
   { id: "work", iconName: "briefcase", label: "Work History", title: "Work Experience" },
-  { id: "skills", iconName: "gear", label: "Skills", title: "Technical Skills" },
+  { id: "skills", iconName: "code", label: "Skills", title: "Technical Skills" },
   { id: "projects", iconName: "folder", label: "My Projects", title: "Projects" },
   { id: "contact", iconName: "mail", label: "Contact", title: "Contact Me" },
 ];
@@ -21,7 +21,7 @@ const desktopApps = [
 const iconComponents = {
   note: NoteIcon,
   briefcase: BriefcaseIcon,
-  gear: GearIcon,
+  code: TerminalIcon,
   folder: FolderIcon,
   mail: MailIcon,
 };
@@ -40,6 +40,10 @@ const Desktop = () => {
   const [selectedIcon, setSelectedIcon] = useState(null);
   const [zCounter, setZCounter] = useState(100);
   const [showStartMenu, setShowStartMenu] = useState(false);
+  const [minimizedWindows, setMinimizedWindows] = useState(new Set());
+  const [windowKeys, setWindowKeys] = useState({});
+  const openWindowsRef = useRef(openWindows);
+  openWindowsRef.current = openWindows;
 
   const focusWindow = useCallback((id) => {
     setActiveWindow(id);
@@ -50,7 +54,12 @@ const Desktop = () => {
     (id) => {
       setSelectedIcon(null);
       setShowStartMenu(false);
-      if (!openWindows.find((w) => w.id === id)) {
+      setMinimizedWindows((prev) => {
+        const next = new Set(prev);
+        next.delete(id);
+        return next;
+      });
+      if (!openWindowsRef.current.find((w) => w.id === id)) {
         const app = desktopApps.find((a) => a.id === id);
         const IconCmp = iconComponents[app.iconName];
         setOpenWindows((prev) => [
@@ -60,17 +69,58 @@ const Desktop = () => {
       }
       setTimeout(() => focusWindow(id), 50);
     },
-    [openWindows, focusWindow]
+    [focusWindow]
   );
 
   const closeWindow = useCallback((id) => {
     setOpenWindows((prev) => prev.filter((w) => w.id !== id));
     setActiveWindow((prev) => (prev === id ? null : prev));
+    setMinimizedWindows((prev) => {
+      const next = new Set(prev);
+      next.delete(id);
+      return next;
+    });
   }, []);
 
-  const handleWindowClick = useCallback((id) => {
-    focusWindow(id);
-  }, [focusWindow]);
+  const handleMinimize = useCallback((id) => {
+    setMinimizedWindows((prev) => new Set([...prev, id]));
+    setActiveWindow((prev) => {
+      if (prev === id) {
+        const remaining = [];
+        for (const w of openWindowsRef.current) {
+          if (w.id !== id) remaining.push(w.id);
+        }
+        return remaining.length > 0 ? remaining[0] : null;
+      }
+      return prev;
+    });
+  }, []);
+
+  const handleRestore = useCallback(
+    (id) => {
+      setMinimizedWindows((prev) => {
+        const next = new Set(prev);
+        next.delete(id);
+        return next;
+      });
+      setWindowKeys((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
+      focusWindow(id);
+    },
+    [focusWindow]
+  );
+
+  const handleTaskbarClick = useCallback(
+    (id) => {
+      if (minimizedWindows.has(id)) {
+        handleRestore(id);
+      } else if (activeWindow === id) {
+        handleMinimize(id);
+      } else {
+        focusWindow(id);
+      }
+    },
+    [minimizedWindows, activeWindow, handleRestore, handleMinimize, focusWindow]
+  );
 
   const getWindowPosition = (id) => ({
     about: { x: 60, y: 40 },
@@ -85,7 +135,7 @@ const Desktop = () => {
     work: { width: 700, height: 500 },
     skills: { width: 640, height: 420 },
     projects: { width: 740, height: 520 },
-    contact: { width: 640, height: 500 },
+    contact: { width: 540, height: 440 },
   }[id] || { width: 600, height: 400 });
 
   const desktopPositions = [
@@ -128,12 +178,13 @@ const Desktop = () => {
           const zIndex = activeWindow === w.id ? 1000 + zCounter : 999;
           return (
             <Window
-              key={w.id}
+              key={w.id + "-" + (windowKeys[w.id] || 0)}
               title={w.title}
               icon={<w.iconCmp size={16} />}
               isFocused={activeWindow === w.id}
               onFocus={() => focusWindow(w.id)}
               onClose={() => closeWindow(w.id)}
+              onMinimize={() => handleMinimize(w.id)}
               defaultPosition={getWindowPosition(w.id)}
               defaultSize={getWindowSize(w.id)}
               initial={{ opacity: 0, scale: 0.92 }}
@@ -151,7 +202,8 @@ const Desktop = () => {
       <Taskbar
         openWindows={openWindows}
         activeWindow={activeWindow}
-        onWindowClick={handleWindowClick}
+        minimizedWindows={minimizedWindows}
+        onWindowClick={handleTaskbarClick}
         onStartClick={() => setShowStartMenu(!showStartMenu)}
       />
 

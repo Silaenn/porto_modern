@@ -1,6 +1,6 @@
 import React from "react";
 
-const Taskbar = ({ openWindows, activeWindow, onWindowClick, onStartClick }) => {
+const Taskbar = ({ openWindows, activeWindow, minimizedWindows, onWindowClick, onStartClick }) => {
   const [clock, setClock] = React.useState(new Date());
 
   React.useEffect(() => {
@@ -59,28 +59,35 @@ const Taskbar = ({ openWindows, activeWindow, onWindowClick, onStartClick }) => 
       </button>
 
       <div className="flex-1 flex items-center gap-0.5 px-1 overflow-x-auto">
-        {openWindows.map((w) => (
-          <button
-            key={w.id}
-            className="flex items-center gap-1.5 px-2 h-5/6 text-xs truncate max-w-[150px] cursor-pointer"
-            style={{
-              background: activeWindow === w.id ? "#C0C0C0" : "#D4D4D4",
-              border: "1px solid #808080",
-              borderTop: "1px solid #FFF",
-              borderLeft: "1px solid #FFF",
-              fontFamily: "Tahoma, sans-serif",
-              fontSize: "11px",
-              boxShadow:
-                activeWindow === w.id
-                  ? "inset 1px 1px 0 #808080, inset -1px -1px 0 #FFF"
-                  : undefined,
-            }}
-            onClick={() => onWindowClick(w.id)}
-          >
-            {w.iconCmp && <w.iconCmp size={14} />}
-            <span className="truncate">{w.title}</span>
-          </button>
-        ))}
+        {openWindows.map((w) => {
+          const isMinimized = minimizedWindows && minimizedWindows.has(w.id);
+          const isActive = activeWindow === w.id;
+          return (
+            <button
+              key={w.id}
+              className="flex items-center gap-1.5 truncate cursor-pointer"
+              style={{
+                height: "30px",
+                padding: "2px 8px",
+                maxWidth: "220px",
+                background: isActive ? "#C0C0C0" : "#D4D4D4",
+                border: "1px solid #808080",
+                borderTop: "1px solid #FFF",
+                borderLeft: "1px solid #FFF",
+                fontFamily: "Tahoma, sans-serif",
+                fontSize: "12px",
+                boxShadow:
+                  isActive || isMinimized
+                    ? "inset 1px 1px 0 #808080, inset -1px -1px 0 #FFF"
+                    : undefined,
+              }}
+              onClick={() => onWindowClick(w.id)}
+            >
+              {w.iconCmp && <w.iconCmp size={14} />}
+              <span className="truncate">{w.title}</span>
+            </button>
+          );
+        })}
       </div>
 
       <div
