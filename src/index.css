@@ -1,19 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@layer base {
+  :root {
+    --font-win98: Tahoma, 'Segoe UI', 'DejaVu Sans', 'Lucida Grande', sans-serif;
+    --font-pixel: 'Press Start 2P', monospace;
+    --text-body: 13px;
+    --text-caption: 11px;
+    --leading-body: 1.5;
+  }
 
-body {
-  overflow: hidden;
-  background: #008080;
-  font-family: Tahoma, sans-serif;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    overflow: hidden;
+    background: #008080;
+    font-family: var(--font-win98);
+    line-height: var(--leading-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 .win-btn:active {

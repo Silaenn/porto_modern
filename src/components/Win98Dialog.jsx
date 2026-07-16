@@ -1,15 +1,14 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Btn = ({ children, onClick }) => (
-  <button
-    className="px-6 py-1 text-xs cursor-pointer"
+  const Btn = ({ children, onClick }) => (
+    <button
+      className="px-6 py-1 text-xs cursor-pointer font-win98"
     style={{
       background: "#C0C0C0",
       border: "2px solid #808080",
       borderTop: "2px solid #FFF",
       borderLeft: "2px solid #FFF",
-      fontFamily: "Tahoma, sans-serif",
       color: "#000",
       minWidth: "75px",
     }}
@@ -59,8 +58,7 @@ const Win98Dialog = ({ open, title, message, onClose, actions }) => {
                 }}
               >
                 <span
-                  className="text-white text-xs font-bold flex-1 truncate ml-0.5"
-                  style={{ fontFamily: "Tahoma, sans-serif", fontSize: "11px" }}
+                  className="text-white text-xs font-bold flex-1 truncate ml-0.5 font-win98"
                 >
                   {title || "Notice"}
                 </span>
@@ -82,8 +80,7 @@ const Win98Dialog = ({ open, title, message, onClose, actions }) => {
                   </svg>
                 </div>
                 <p
-                  className="text-black text-xs flex-1"
-                  style={{ fontFamily: "Tahoma, sans-serif", lineHeight: "1.3" }}
+                  className="text-black text-xs flex-1 font-win98 leading-relaxed"
                 >
                   {message}
                 </p>

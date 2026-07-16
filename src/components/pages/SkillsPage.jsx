@@ -72,11 +72,9 @@ const SkillsPage = () => {
 
   return (
     <div
-      className="p-4 flex flex-col h-full overflow-auto"
+      className="p-4 flex flex-col h-full overflow-auto font-win98 text-xs"
       style={{
-        fontFamily: "Tahoma, sans-serif",
         background: "#C0C0C0",
-        fontSize: "12px",
       }}
     >
       <div className="flex-1 space-y-2">
@@ -88,13 +86,13 @@ const SkillsPage = () => {
                 background: "linear-gradient(90deg, #000080, #1084D0)",
                 color: "#FFF",
                 border: "none",
-                fontFamily: "Tahoma, sans-serif",
+                fontFamily: "var(--font-win98)",
               }}
               onClick={() => toggle(cat.name)}
             >
               <span>{expanded[cat.name] ? "\u25BC" : "\u25B6"}</span>
               {cat.name}
-              <span className="text-white/70 ml-auto text-[10px]">{cat.skills.length} skills</span>
+              <span className="text-white/70 ml-auto text-xs">{cat.skills.length} skills</span>
             </button>
             {(expanded[cat.name] ?? true) && (
               <div className="divide-y divide-gray-400">

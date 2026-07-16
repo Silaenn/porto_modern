@@ -20,9 +20,8 @@ module.exports = {
         xs: "450px",
       },
       fontFamily: {
-        y2k: ['"Fredoka"', "sans-serif"],
-        body: ['"Space Grotesk"', "sans-serif"],
-        pixel: ['"Press Start 2P"', "cursive"],
+        win98: ['Tahoma', '"Segoe UI"', '"DejaVu Sans"', '"Lucida Grande"', 'sans-serif'],
+        pixel: ['"Press Start 2P"', 'monospace'],
       },
     },
   },

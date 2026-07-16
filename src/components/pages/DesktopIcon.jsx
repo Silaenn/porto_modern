@@ -38,10 +38,8 @@ const DesktopIcon = ({ icon, label, selected, onClick, onDoubleClick, iconSize =
         {icon}
       </div>
       <span
-        className="text-xs text-center px-1 py-0.5 truncate max-w-full"
+        className="text-xs text-center px-1 py-0.5 truncate max-w-full font-win98"
         style={{
-          fontFamily: "Tahoma, sans-serif",
-          fontSize: Math.max(9, Math.min(11, iconSize * 0.35)) + "px",
           color: selected ? "#FFF" : "#FFF",
           background: selected ? "rgba(0,0,128,0.6)" : "transparent",
           border: selected ? "1px dotted rgba(255,255,255,0.5)" : "1px solid transparent",

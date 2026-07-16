@@ -120,7 +120,7 @@ const BootScreen = ({ onFinish }) => {
               <h1
                 className="text-white tracking-wide"
                 style={{
-                  fontFamily: "'Press Start 2P', monospace",
+                  fontFamily: "var(--font-pixel)",
                   fontSize: isMobile ? "12px" : "20px",
                   textShadow: "0 0 20px rgba(0,100,255,0.3)",
                 }}
@@ -135,7 +135,7 @@ const BootScreen = ({ onFinish }) => {
 
             <p
               className="text-gray-500 mt-4"
-              style={{ fontFamily: "'Press Start 2P', monospace", fontSize: isMobile ? "6px" : "8px" }}
+              style={{ fontFamily: "var(--font-pixel)", fontSize: isMobile ? "6px" : "8px" }}
             >
               {progress < 100 ? "Please wait while Windows starts..." : "Welcome!"}
             </p>
@@ -143,7 +143,7 @@ const BootScreen = ({ onFinish }) => {
 
           <motion.p
             className={`text-gray-700 text-xs ${isMobile ? "absolute bottom-4" : "absolute bottom-8"}`}
-            style={{ fontFamily: "'Press Start 2P', monospace", fontSize: isMobile ? "5px" : "7px" }}
+            style={{ fontFamily: "var(--font-pixel)", fontSize: isMobile ? "5px" : "7px" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}

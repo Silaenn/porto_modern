@@ -24,11 +24,9 @@ const ContactPage = () => {
 
   return (
     <div
-      className="p-4 flex flex-col h-full overflow-auto"
+      className="p-4 flex flex-col h-full overflow-auto font-win98 text-xs"
       style={{
-        fontFamily: "Tahoma, sans-serif",
         background: "#C0C0C0",
-        fontSize: "12px",
       }}
     >
       <Win98Dialog
@@ -47,8 +45,7 @@ const ContactPage = () => {
             value={form.name}
             onChange={handleChange}
             placeholder="Your name"
-            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-1 text-xs text-black rounded-none"
-            style={{ fontFamily: "Tahoma, sans-serif" }}
+            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-1 text-xs text-black rounded-none font-win98"
             required
           />
         </div>
@@ -60,8 +57,7 @@ const ContactPage = () => {
             value={form.email}
             onChange={handleChange}
             placeholder="your@email.com"
-            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-1 text-xs text-black rounded-none"
-            style={{ fontFamily: "Tahoma, sans-serif" }}
+            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-1 text-xs text-black rounded-none font-win98"
             required
           />
         </div>
@@ -72,17 +68,15 @@ const ContactPage = () => {
             value={form.message}
             onChange={handleChange}
             placeholder="Your message..."
-            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-1 text-xs text-black resize-none rounded-none h-full"
-            style={{ fontFamily: "Tahoma, sans-serif" }}
+            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-1 text-xs text-black resize-none rounded-none h-full font-win98"
             required
           />
         </div>
         <button
           type="submit"
           disabled={loading}
-          className="w-full text-xs font-bold px-3 py-1.5 cursor-pointer"
+          className="w-full text-xs font-bold px-3 py-1.5 cursor-pointer font-win98"
           style={{
-            fontFamily: "Tahoma, sans-serif",
             background: loading ? "#999" : "#C0C0C0",
             color: loading ? "#666" : "#000",
             border: "2px solid #808080",

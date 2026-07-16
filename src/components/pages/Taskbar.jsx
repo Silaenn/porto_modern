@@ -23,7 +23,7 @@ const Taskbar = ({ openWindows, activeWindow, minimizedWindows, onWindowClick, o
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-[9999] flex items-center"
+      className="fixed bottom-0 left-0 right-0 z-[9999] flex items-center font-win98 text-xs"
       style={{
         height: "40px",
         background: "#C0C0C0",
@@ -38,7 +38,6 @@ const Taskbar = ({ openWindows, activeWindow, minimizedWindows, onWindowClick, o
           borderLeft: "1px solid #FFF",
           minWidth: "80px",
           background: "transparent",
-          fontFamily: "Tahoma, sans-serif",
         }}
         onClick={onStartClick}
       >
@@ -74,8 +73,6 @@ const Taskbar = ({ openWindows, activeWindow, minimizedWindows, onWindowClick, o
                 border: "1px solid #808080",
                 borderTop: "1px solid #FFF",
                 borderLeft: "1px solid #FFF",
-                fontFamily: "Tahoma, sans-serif",
-                fontSize: "12px",
                 boxShadow:
                   isActive || isMinimized
                     ? "inset 1px 1px 0 #808080, inset -1px -1px 0 #FFF"

@@ -6,11 +6,9 @@ const ProjectsPage = () => {
 
   return (
     <div
-      className="p-4 flex flex-col h-full overflow-auto"
+      className="p-4 flex flex-col h-full overflow-auto font-win98 text-xs leading-relaxed"
       style={{
-        fontFamily: "Tahoma, sans-serif",
         background: "#C0C0C0",
-        fontSize: "12px",
       }}
     >
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-3">
@@ -34,10 +32,10 @@ const ProjectsPage = () => {
             </div>
             <div className="p-2">
               <h3 className="text-black font-bold text-xs mb-1">{project.name}</h3>
-              <p className="text-gray-700 text-[10px] mb-2 line-clamp-2">{project.description}</p>
+              <p className="text-gray-700 text-xs mb-2 leading-relaxed line-clamp-2">{project.description}</p>
               <div className="flex flex-wrap gap-1">
                 {project.tags.map((t) => (
-                  <span key={t.name} className="text-[10px] bg-gray-300 border border-gray-400 px-1 py-0.5">
+                  <span key={t.name} className="text-xs bg-gray-300 border border-gray-400 px-1 py-0.5">
                     {t.name}
                   </span>
                 ))}
@@ -47,8 +45,7 @@ const ProjectsPage = () => {
                   href={project.source_code_link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center mt-2 text-xs bg-blue-800 text-white px-2 py-1 hover:bg-blue-900"
-                  style={{ fontFamily: "Tahoma, sans-serif" }}
+                  className="block text-center mt-2 text-xs bg-blue-800 text-white px-2 py-1 hover:bg-blue-900 font-win98"
                 >
                   View Project
                 </a>

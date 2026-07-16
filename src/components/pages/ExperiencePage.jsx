@@ -4,11 +4,9 @@ import { experiences } from "../../constants";
 const ExperiencePage = () => {
   return (
     <div
-      className="p-4 flex flex-col h-full overflow-auto"
+      className="p-4 flex flex-col h-full overflow-auto font-win98 text-xs leading-relaxed"
       style={{
-        fontFamily: "Tahoma, sans-serif",
         background: "#C0C0C0",
-        fontSize: "12px",
       }}
     >
       <div className="flex-1 space-y-3">

@@ -264,13 +264,13 @@ const Desktop = () => {
             >
               <div className="flex" style={{ minHeight: isMobile ? "auto" : "300px" }}>
                 <div
-                  className="flex flex-col items-center py-2 px-1"
+                  className="flex flex-col items-center py-2 px-1 font-win98"
                   style={{
                     background: "linear-gradient(0deg, #000080 0%, #1084D0 100%)",
                     width: "24px",
                   }}
                 >
-                  <span className="text-white text-xs font-bold" style={{ writingMode: "vertical-rl", textOrientation: "mixed", fontSize: "10px", fontFamily: "Tahoma, sans-serif" }}>
+                  <span className="text-white font-bold" style={{ writingMode: "vertical-rl", textOrientation: "mixed", fontSize: "11px" }}>
                     Windows98
                   </span>
                 </div>
@@ -281,10 +281,8 @@ const Desktop = () => {
                     return (
                       <button
                         key={app.id}
-                        className="w-full flex items-center gap-2 px-2 py-1.5 text-left hover:bg-blue-800 hover:text-white cursor-pointer"
+                        className="w-full flex items-center gap-2 px-2 py-1.5 text-left hover:bg-blue-800 hover:text-white cursor-pointer font-win98 text-xs"
                         style={{
-                          fontFamily: "Tahoma, sans-serif",
-                          fontSize: "12px",
                           border: "none",
                           background: "transparent",
                           color: "#000",
@@ -300,10 +298,8 @@ const Desktop = () => {
                   <div className="border-t border-gray-400 my-1 mx-2" />
 
                   <button
-                    className="w-full flex items-center gap-2 px-2 py-1.5 text-left hover:bg-blue-800 hover:text-white cursor-pointer"
+                    className="w-full flex items-center gap-2 px-2 py-1.5 text-left hover:bg-blue-800 hover:text-white cursor-pointer font-win98 text-xs"
                     style={{
-                      fontFamily: "Tahoma, sans-serif",
-                      fontSize: "12px",
                       border: "none",
                       background: "transparent",
                       color: "#000",

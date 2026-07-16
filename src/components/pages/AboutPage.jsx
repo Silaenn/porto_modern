@@ -4,11 +4,9 @@ import { services } from "../../constants";
 const AboutPage = () => {
   return (
     <div
-      className="p-4 flex flex-col h-full overflow-auto"
+      className="p-4 flex flex-col h-full overflow-auto font-win98 text-xs leading-relaxed"
       style={{
-        fontFamily: "Tahoma, sans-serif",
         background: "#C0C0C0",
-        fontSize: "12px",
       }}
     >
       <div className="bg-gray-200 border border-gray-400 p-4 mb-3 flex items-start gap-4">
@@ -45,10 +43,10 @@ const AboutPage = () => {
                 <span className="text-black font-bold text-xs">{s.title}</span>
                 <span className="text-gray-600 text-xs whitespace-nowrap ml-2">{s.history}</span>
               </div>
-              <p className="text-gray-700 text-[11px] mb-1 leading-relaxed">{s.description}</p>
+              <p className="text-gray-700 text-xs mb-1 leading-relaxed">{s.description}</p>
               <ul className="space-y-0.5">
                 {s.achievements.map((a, j) => (
-                  <li key={j} className="text-gray-600 text-[10px] flex gap-1.5">
+                  <li key={j} className="text-gray-600 text-xs flex gap-1.5">
                     <span className="text-blue-800 mt-0.5">&#8226;</span>
                     <span>{a}</span>
                   </li>

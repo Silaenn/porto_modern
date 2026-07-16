@@ -306,9 +306,8 @@ const Window = ({
             <span className="flex items-center mr-1.5 ml-0.5">{icon}</span>
           )}
           <span
-            className="text-sm font-bold flex-1 truncate"
+            className="text-sm font-bold flex-1 truncate font-win98"
             style={{
-              fontFamily: "Tahoma, sans-serif",
               fontSize: "12px",
               color: isFocused ? "#FFF" : "#DDD",
             }}
