@@ -31,8 +31,8 @@ const Btn = ({ children, onClick, onMouseDown, onTouchStart }) => (
     <button
       className="win-btn"
       style={{
-        width: "20px",
-        height: "20px",
+        width: "22px",
+        height: "22px",
       background: "#C0C0C0",
       border: "1px solid #808080",
       borderTop: "1px solid #FFF",
@@ -115,7 +115,7 @@ const Window = ({
   useEffect(() => {
     if (defaultMaximized) {
       setPosition({ x: 0, y: 0 });
-      setSize({ width: window.innerWidth, height: window.innerHeight - 50 });
+      setSize({ width: window.innerWidth, height: window.innerHeight - 44 });
     }
   }, [defaultMaximized]);
 
@@ -252,7 +252,7 @@ const Window = ({
     } else {
       setMaximizedState({ position, size });
       setPosition({ x: 0, y: 0 });
-      setSize({ width: window.innerWidth, height: window.innerHeight - 50 });
+      setSize({ width: window.innerWidth, height: window.innerHeight - 44 });
       setIsMaximized(true);
     }
   };
@@ -276,9 +276,9 @@ const Window = ({
         left: isMaximized ? 0 : position.x,
         top: isMaximized ? 0 : position.y,
         width: isMaximized ? "100vw" : size.width,
-        height: isMaximized ? "calc(100vh - 50px)" : size.height,
+        height: isMaximized ? "calc(100vh - 44px)" : size.height,
         maxWidth: "100vw",
-        maxHeight: "calc(100vh - 50px)",
+        maxHeight: "calc(100vh - 44px)",
         ...externalStyle,
       }}
       {...animProps}

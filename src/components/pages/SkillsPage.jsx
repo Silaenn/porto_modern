@@ -65,7 +65,9 @@ const SkillRow = ({ skill }) => {
 };
 
 const SkillsPage = () => {
-  const [expanded, setExpanded] = useState({});
+  const [expanded, setExpanded] = useState(() =>
+    Object.fromEntries(skillCategories.map((c) => [c.name, true]))
+  );
   const toggle = (catName) => {
     setExpanded((prev) => ({ ...prev, [catName]: !prev[catName] }));
   };
@@ -81,7 +83,7 @@ const SkillsPage = () => {
         {skillCategories.map((cat) => (
           <div key={cat.name} className="bg-gray-200 border border-gray-400 overflow-hidden">
             <button
-              className="w-full flex items-center gap-2 px-3 py-2 text-xs font-bold text-left cursor-pointer"
+              className="w-full flex items-center gap-2 px-3 py-2 text-xs font-bold text-left cursor-pointer min-h-[44px]"
               style={{
                 background: "linear-gradient(90deg, #000080, #1084D0)",
                 color: "#FFF",
@@ -94,7 +96,7 @@ const SkillsPage = () => {
               {cat.name}
               <span className="text-white/90 ml-auto text-xs">{cat.skills.length} skills</span>
             </button>
-            {(expanded[cat.name] ?? true) && (
+            {expanded[cat.name] && (
               <div className="divide-y divide-gray-400">
                 {cat.skills.map((skill) => (
                   <SkillRow

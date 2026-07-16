@@ -13,9 +13,9 @@ import { NoteIcon, BriefcaseIcon, TerminalIcon, FolderIcon, MailIcon } from "../
 
 const desktopApps = [
   { id: "about", iconName: "note", label: "About Me", title: "About Me" },
-  { id: "work", iconName: "briefcase", label: "Work History", title: "Work Experience" },
+  { id: "work", iconName: "briefcase", label: "Work", title: "Work Experience" },
   { id: "skills", iconName: "code", label: "Skills", title: "Technical Skills" },
-  { id: "projects", iconName: "folder", label: "My Projects", title: "Projects" },
+  { id: "projects", iconName: "folder", label: "Projects", title: "Projects" },
   { id: "contact", iconName: "mail", label: "Contact", title: "Contact Me" },
 ];
 
@@ -50,7 +50,7 @@ const Desktop = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
+    const check = () => setIsMobile(window.innerWidth < 640);
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
@@ -146,7 +146,7 @@ const Desktop = () => {
   };
 
   const getWindowSize = (id) => {
-    if (isMobile) return { width: window.innerWidth, height: window.innerHeight - 50 };
+    if (isMobile) return { width: window.innerWidth, height: window.innerHeight - 40 };
     return ({
       about: { width: 640, height: 480 },
       work: { width: 700, height: 500 },
@@ -176,7 +176,7 @@ const Desktop = () => {
 
   return (
     <div
-      className="fixed inset-0 overflow-hidden select-none"
+      className="fixed inset-0 select-none"
       style={{
         backgroundColor: "#008080",
         backgroundImage: `radial-gradient(circle at 20% 30%, rgba(0,255,255,0.08) 0%, transparent 50%),
@@ -298,7 +298,7 @@ className="w-full flex items-center gap-2 px-2 py-2 text-left hover:bg-blue-800 
                   <div className="border-t border-gray-400 my-1 mx-2" />
 
                   <button
-                    className="w-full flex items-center gap-2 px-2 py-2 text-left hover:bg-blue-800 hover:text-white cursor-pointer font-win98 text-xs"
+                    className="w-full flex items-center gap-2 px-2 py-2 text-left hover:bg-blue-800 hover:text-white cursor-pointer font-win98 text-xs min-h-[44px]"
                     style={{
                       border: "none",
                       background: "transparent",

@@ -17,7 +17,7 @@ const ExperiencePage = () => {
                 <h3 className="text-black font-bold text-sm">{exp.title}</h3>
                 <p className="text-blue-800 text-xs font-semibold">{exp.company_name}</p>
               </div>
-              <span className="text-gray-700 text-xs whitespace-nowrap ml-2">
+              <span className="text-gray-700 text-xs truncate ml-2">
                 {exp.date}
               </span>
             </div>

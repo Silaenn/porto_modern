@@ -61,21 +61,21 @@ const ContactPage = () => {
             required
           />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 flex flex-col">
           <label className="text-black text-xs font-bold block mb-1">Message</label>
           <textarea
             name="message"
             value={form.message}
             onChange={handleChange}
             placeholder="Your message..."
-            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-2 text-xs text-black resize-none rounded-none h-full font-win98"
+            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-2 text-xs text-black resize-none rounded-none flex-1 font-win98"
             required
           />
         </div>
         <button
           type="submit"
           disabled={loading}
-          className="w-full text-xs font-bold px-3 py-2 cursor-pointer font-win98"
+          className="w-full text-xs font-bold px-3 py-2 cursor-pointer font-win98 flex-shrink-0"
           style={{
             background: loading ? "#444" : "#C0C0C0",
             color: loading ? "#CCC" : "#000",

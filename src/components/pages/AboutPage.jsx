@@ -41,7 +41,7 @@ const AboutPage = () => {
             <div key={i} className="bg-gray-200 border border-gray-400 p-3">
               <div className="flex justify-between items-center mb-1">
                 <span className="text-black font-bold text-xs">{s.title}</span>
-                <span className="text-gray-700 text-xs whitespace-nowrap ml-2">{s.history}</span>
+                <span className="text-gray-700 text-xs truncate ml-2">{s.history}</span>
               </div>
               <p className="text-gray-700 text-xs mb-1 leading-relaxed">{s.description}</p>
               <ul className="space-y-1">

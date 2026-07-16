@@ -25,7 +25,7 @@ const Taskbar = ({ openWindows, activeWindow, minimizedWindows, onWindowClick, o
     <div
       className="fixed bottom-0 left-0 right-0 z-[9999] flex items-center font-win98 text-xs"
       style={{
-        height: "40px",
+        height: "44px",
         background: "#C0C0C0",
         borderTop: "2px solid #FFF",
         boxShadow: "0 -1px 0 #808080",
@@ -66,8 +66,8 @@ const Taskbar = ({ openWindows, activeWindow, minimizedWindows, onWindowClick, o
               key={w.id}
               className="flex items-center gap-2 truncate cursor-pointer"
               style={{
-                height: "30px",
-                padding: "4px 8px",
+                height: "36px",
+                padding: "8px 8px",
                 maxWidth: "220px",
                 background: isActive ? "#C0C0C0" : "#D4D4D4",
                 border: "1px solid #808080",
