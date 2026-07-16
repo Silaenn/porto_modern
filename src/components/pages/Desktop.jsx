@@ -254,12 +254,11 @@ const Desktop = () => {
               style={{
                 bottom: "40px",
                 left: "0",
-                right: isMobile ? "0" : "auto",
                 background: "#C0C0C0",
                 border: "2px solid #808080",
                 borderTop: "2px solid #FFF",
                 borderLeft: "2px solid #FFF",
-                minWidth: isMobile ? "auto" : "200px",
+                minWidth: "200px",
                 boxShadow: "2px -2px 5px rgba(0,0,0,0.3)",
               }}
             >

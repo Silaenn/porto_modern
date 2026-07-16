@@ -17,14 +17,14 @@ const ProjectsPage = () => {
         {projects.map((project, i) => (
           <div
             key={i}
-            className="bg-gray-200 border border-gray-400 cursor-pointer"
+            className="bg-gray-200 border border-gray-400 cursor-pointer flex flex-col"
             style={{
               borderColor: selected === i ? "#000080" : undefined,
               borderWidth: selected === i ? "2px" : "1px",
             }}
             onClick={() => setSelected(selected === i ? null : i)}
           >
-            <div className="h-24 bg-gray-400 border-b border-gray-400 flex items-center justify-center overflow-hidden">
+            <div className="flex-1 bg-gray-400 border-b border-gray-400 flex items-center justify-center overflow-hidden min-h-[96px]">
               <img
                 src={project.image}
                 alt={project.name}
