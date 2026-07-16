@@ -9,6 +9,16 @@
     --text-body: 13px;
     --text-caption: 11px;
     --leading-body: 1.5;
+
+    --color-desktop: #008080;
+    --color-silver: #C0C0C0;
+    --color-silver-light: #D4D4D4;
+    --color-navy: #000080;
+    --color-navy-dark: #00004D;
+    --color-blue-bright: #1084D0;
+    --color-gray-border: #808080;
+    --color-black: #000;
+    --color-white: #FFF;
   }
 
   * {

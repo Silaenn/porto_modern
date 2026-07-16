@@ -46,7 +46,7 @@ const SkillRow = ({ skill }) => {
       <div className="flex-1 min-w-0">
         <div className="flex justify-between text-xs text-black">
           <span className="font-medium">{skill.name}</span>
-          <span className="text-gray-600">{skill.level}%</span>
+          <span className="text-gray-700">{skill.level}%</span>
         </div>
         <div className="mt-1 h-3 bg-gray-400 border border-gray-500 overflow-hidden">
           <div
@@ -92,7 +92,7 @@ const SkillsPage = () => {
             >
               <span>{expanded[cat.name] ? "\u25BC" : "\u25B6"}</span>
               {cat.name}
-              <span className="text-white/70 ml-auto text-xs">{cat.skills.length} skills</span>
+              <span className="text-white/90 ml-auto text-xs">{cat.skills.length} skills</span>
             </button>
             {(expanded[cat.name] ?? true) && (
               <div className="divide-y divide-gray-400">

@@ -22,8 +22,8 @@ const AboutPage = () => {
         <div className="flex-1">
           <h2 className="text-black font-bold text-base">Alex Rivera</h2>
           <p className="text-blue-800 font-semibold text-xs mt-0.5">Full-Stack Developer</p>
-          <p className="text-gray-600 text-xs mt-0.5">San Francisco, CA</p>
-          <p className="text-gray-600 text-xs">hello@alexrivera.dev</p>
+          <p className="text-gray-700 text-xs mt-0.5">San Francisco, CA</p>
+          <p className="text-gray-700 text-xs">hello@alexrivera.dev</p>
           <p className="text-black text-xs mt-2 leading-relaxed">
             Creative problem solver passionate about building modern web
             applications with clean architecture and great UX. 4+ years of
@@ -41,12 +41,12 @@ const AboutPage = () => {
             <div key={i} className="bg-gray-200 border border-gray-400 p-3">
               <div className="flex justify-between items-center mb-1">
                 <span className="text-black font-bold text-xs">{s.title}</span>
-                <span className="text-gray-600 text-xs whitespace-nowrap ml-2">{s.history}</span>
+                <span className="text-gray-700 text-xs whitespace-nowrap ml-2">{s.history}</span>
               </div>
               <p className="text-gray-700 text-xs mb-1 leading-relaxed">{s.description}</p>
               <ul className="space-y-0.5">
                 {s.achievements.map((a, j) => (
-                  <li key={j} className="text-gray-600 text-xs flex gap-1.5">
+                  <li key={j} className="text-gray-700 text-xs flex gap-1.5">
                     <span className="text-blue-800 mt-0.5">&#8226;</span>
                     <span>{a}</span>
                   </li>

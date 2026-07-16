@@ -142,7 +142,7 @@ const BootScreen = ({ onFinish }) => {
           </motion.div>
 
           <motion.p
-            className={`text-gray-700 text-xs ${isMobile ? "absolute bottom-4" : "absolute bottom-8"}`}
+            className={`text-gray-400 text-xs ${isMobile ? "absolute bottom-4" : "absolute bottom-8"}`}
             style={{ fontFamily: "var(--font-pixel)", fontSize: isMobile ? "5px" : "7px" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

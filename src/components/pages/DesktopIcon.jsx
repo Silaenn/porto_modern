@@ -41,6 +41,7 @@ const DesktopIcon = ({ icon, label, selected, onClick, onDoubleClick, iconSize =
         className="text-xs text-center px-1 py-0.5 truncate max-w-full font-win98"
         style={{
           color: selected ? "#FFF" : "#FFF",
+          textShadow: selected ? "none" : "0 1px 2px rgba(0,0,0,0.6)",
           background: selected ? "rgba(0,0,128,0.6)" : "transparent",
           border: selected ? "1px dotted rgba(255,255,255,0.5)" : "1px solid transparent",
         }}

@@ -288,8 +288,8 @@ const Window = ({
         style={{
           boxShadow: "2px 2px 10px rgba(0,0,0,0.5)",
           border: "2px solid #808080",
-          borderTop: "2px solid #C0C0C0",
-          borderLeft: "2px solid #C0C0C0",
+          borderTop: "2px solid #FFF",
+          borderLeft: "2px solid #FFF",
         }}
       >
         <div
@@ -309,7 +309,7 @@ const Window = ({
             className="text-sm font-bold flex-1 truncate font-win98"
             style={{
               fontSize: "12px",
-              color: isFocused ? "#FFF" : "#DDD",
+              color: isFocused ? "#FFF" : "#FFF",
             }}
           >
             {title}

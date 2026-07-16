@@ -77,8 +77,8 @@ const ContactPage = () => {
           disabled={loading}
           className="w-full text-xs font-bold px-3 py-1.5 cursor-pointer font-win98"
           style={{
-            background: loading ? "#999" : "#C0C0C0",
-            color: loading ? "#666" : "#000",
+            background: loading ? "#444" : "#C0C0C0",
+            color: loading ? "#CCC" : "#000",
             border: "2px solid #808080",
             borderTop: "2px solid #FFF",
             borderLeft: "2px solid #FFF",

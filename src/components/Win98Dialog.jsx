@@ -44,8 +44,8 @@ const Win98Dialog = ({ open, title, message, onClose, actions }) => {
             <div
               style={{
                 border: "2px solid #808080",
-                borderTop: "2px solid #C0C0C0",
-                borderLeft: "2px solid #C0C0C0",
+                borderTop: "2px solid #FFF",
+                borderLeft: "2px solid #FFF",
                 boxShadow: "3px 3px 8px rgba(0,0,0,0.4)",
                 background: "#C0C0C0",
               }}
