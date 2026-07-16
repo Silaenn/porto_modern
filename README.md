@@ -75,7 +75,8 @@ The project was built to showcase Alex Rivera's work in a way that stands out fr
 ---
 
 ## Screenshots
-<img width="1920" height="964" alt="Portfolio-Alex-Rivera" src="https://github.com/user-attachments/assets/6f6c4954-be57-4c12-bc40-e953566e38d7" />
+<img width="1920" height="964" alt="Portfolio-Alex-Rivera(1)" src="https://github.com/user-attachments/assets/002947d2-c892-4fd4-8300-f0e14968a887" />
+
 
 ---
 
