@@ -96,12 +96,13 @@ const Window = ({
   transition,
   style: externalStyle,
   defaultMaximized = false,
+  defaultMinimized = false,
 }) => {
   const [position, setPosition] = useState(defaultPosition);
   const [size, setSize] = useState(defaultSize);
   const [isDragging, setIsDragging] = useState(false);
   const [isResizing, setIsResizing] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
+  const [isHidden, setIsHidden] = useState(defaultMinimized);
   const [isMinimizing, setIsMinimizing] = useState(false);
   const [isMaximized, setIsMaximized] = useState(defaultMaximized);
   const [maximizedState, setMaximizedState] = useState(
@@ -109,6 +110,7 @@ const Window = ({
   );
   const dragRef = useRef({ startX: 0, startY: 0, startPosX: 0, startPosY: 0 });
   const resizeRef = useRef({ startX: 0, startY: 0, startW: 0, startH: 0 });
+  const minimizeTimer = useRef(null);
 
   useEffect(() => {
     if (defaultMaximized) {
@@ -116,6 +118,12 @@ const Window = ({
       setSize({ width: window.innerWidth, height: window.innerHeight - 50 });
     }
   }, [defaultMaximized]);
+
+  useEffect(() => {
+    return () => {
+      if (minimizeTimer.current) clearTimeout(minimizeTimer.current);
+    };
+  }, []);
 
   const handleMouseDown = useCallback(
     (e) => {
@@ -228,7 +236,7 @@ const Window = ({
   const handleMinimize = () => {
     if (onMinimize) {
       setIsMinimizing(true);
-      setTimeout(() => {
+      minimizeTimer.current = setTimeout(() => {
         onMinimize();
         setIsMinimizing(false);
         setIsHidden(true);

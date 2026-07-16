@@ -95,6 +95,7 @@ const Desktop = () => {
 
   const handleMinimize = useCallback((id) => {
     setMinimizedWindows((prev) => new Set([...prev, id]));
+    setWindowKeys((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
     setActiveWindow((prev) => {
       if (prev === id) {
         const remaining = [];
@@ -216,6 +217,7 @@ const Desktop = () => {
               defaultPosition={getWindowPosition(w.id)}
               defaultSize={getWindowSize(w.id)}
               defaultMaximized={isMobile}
+              defaultMinimized={minimizedWindows.has(w.id)}
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.92 }}

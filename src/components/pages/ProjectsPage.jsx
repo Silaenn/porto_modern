@@ -6,15 +6,14 @@ const ProjectsPage = () => {
 
   return (
     <div
-      className="p-4 overflow-auto"
+      className="p-4 flex flex-col h-full overflow-auto"
       style={{
         fontFamily: "Tahoma, sans-serif",
         background: "#C0C0C0",
-        height: "100%",
         fontSize: "12px",
       }}
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-3">
         {projects.map((project, i) => (
           <div
             key={i}

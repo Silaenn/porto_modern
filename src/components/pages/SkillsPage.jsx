@@ -72,15 +72,14 @@ const SkillsPage = () => {
 
   return (
     <div
-      className="p-4 overflow-auto"
+      className="p-4 flex flex-col h-full overflow-auto"
       style={{
         fontFamily: "Tahoma, sans-serif",
         background: "#C0C0C0",
-        height: "100%",
         fontSize: "12px",
       }}
     >
-      <div className="space-y-2">
+      <div className="flex-1 space-y-2">
         {skillCategories.map((cat) => (
           <div key={cat.name} className="bg-gray-200 border border-gray-400 overflow-hidden">
             <button

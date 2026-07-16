@@ -4,11 +4,10 @@ import { services } from "../../constants";
 const AboutPage = () => {
   return (
     <div
-      className="p-4 overflow-auto"
+      className="p-4 flex flex-col h-full overflow-auto"
       style={{
         fontFamily: "Tahoma, sans-serif",
         background: "#C0C0C0",
-        height: "100%",
         fontSize: "12px",
       }}
     >
@@ -35,18 +34,20 @@ const AboutPage = () => {
         </div>
       </div>
 
-      <h3 className="text-black font-bold text-xs mb-2 border-b border-gray-400 pb-1">
-        Education
-      </h3>
-      <div className="space-y-2">
-        {services.map((s, i) => (
-          <div key={i} className="bg-gray-200 border border-gray-400 p-3">
-            <div className="flex justify-between items-center">
-              <span className="text-black font-bold text-xs">{s.title}</span>
-              <span className="text-gray-600 text-xs">{s.history}</span>
+      <div className="flex-1">
+        <h3 className="text-black font-bold text-xs mb-2 border-b border-gray-400 pb-1">
+          Education
+        </h3>
+        <div className="space-y-2">
+          {services.map((s, i) => (
+            <div key={i} className="bg-gray-200 border border-gray-400 p-3">
+              <div className="flex justify-between items-center">
+                <span className="text-black font-bold text-xs">{s.title}</span>
+                <span className="text-gray-600 text-xs">{s.history}</span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       <div className="bg-yellow-100 border border-yellow-400 p-2 mt-3 text-xs text-black">

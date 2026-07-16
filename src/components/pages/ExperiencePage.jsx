@@ -4,15 +4,14 @@ import { experiences } from "../../constants";
 const ExperiencePage = () => {
   return (
     <div
-      className="p-4 overflow-auto"
+      className="p-4 flex flex-col h-full overflow-auto"
       style={{
         fontFamily: "Tahoma, sans-serif",
         background: "#C0C0C0",
-        height: "100%",
         fontSize: "12px",
       }}
     >
-      <div className="space-y-3">
+      <div className="flex-1 space-y-3">
         {experiences.map((exp, i) => (
           <div key={i} className="bg-gray-200 border border-gray-400 p-3">
             <div className="flex justify-between items-start mb-2">

@@ -24,11 +24,10 @@ const ContactPage = () => {
 
   return (
     <div
-      className="p-4 overflow-auto"
+      className="p-4 flex flex-col h-full overflow-auto"
       style={{
         fontFamily: "Tahoma, sans-serif",
         background: "#C0C0C0",
-        height: "100%",
         fontSize: "12px",
       }}
     >
@@ -39,7 +38,7 @@ const ContactPage = () => {
         onClose={() => setShowDialog(false)}
       />
 
-      <form onSubmit={handleSubmit} className="space-y-3">
+      <form onSubmit={handleSubmit} className="flex flex-col h-full space-y-3">
         <div>
           <label className="text-black text-xs font-bold block mb-0.5">Name</label>
           <input
@@ -66,15 +65,14 @@ const ContactPage = () => {
             required
           />
         </div>
-        <div>
+        <div className="flex-1">
           <label className="text-black text-xs font-bold block mb-0.5">Message</label>
           <textarea
-            rows={6}
             name="message"
             value={form.message}
             onChange={handleChange}
             placeholder="Your message..."
-            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-1 text-xs text-black resize-none rounded-none"
+            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-1 text-xs text-black resize-none rounded-none h-full"
             style={{ fontFamily: "Tahoma, sans-serif" }}
             required
           />
