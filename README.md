@@ -70,11 +70,7 @@ The project was built to showcase Alex Rivera's work in a way that stands out fr
 | Scrollbar  | [tailwind-scrollbar](https://github.com/adoxography/tailwind-scrollbar) |
 | Deployment | [Vercel](https://vercel.com)                                            |
 
-<img src="https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB" alt="React" />
-<img src="https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white" alt="Vite" />
-<img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind" />
-<img src="https://img.shields.io/badge/Framer_Motion-0055FF?logo=framer&logoColor=white" alt="Framer Motion" />
-<img src="https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white" alt="Vercel" />
+<img src="https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB" alt="React" /> <img src="https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white" alt="Vite" /> <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind" /> <img src="https://img.shields.io/badge/Framer_Motion-0055FF?logo=framer&logoColor=white" alt="Framer Motion" /> <img src="https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white" alt="Vercel" />
 
 ---
 
@@ -101,7 +97,7 @@ The project was built to showcase Alex Rivera's work in a way that stands out fr
 
 ```bash
 git clone https://github.com/Silaenn/porto_modern.git
-cd y2k-portfolio
+cd porto_modern
 npm install
 ```
 
