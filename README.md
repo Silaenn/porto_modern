@@ -75,14 +75,7 @@ The project was built to showcase Alex Rivera's work in a way that stands out fr
 ---
 
 ## Screenshots
-
-| Boot Screen                                                           | Desktop                                                          |
-| --------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| ![Boot screen](https://placehold.co/600x400/000/FFF?text=Boot+Screen) | ![Desktop](https://placehold.co/600x400/008080/FFF?text=Desktop) |
-
-| About Window                                                 | Skills Accordion                                               |
-| ------------------------------------------------------------ | -------------------------------------------------------------- |
-| ![About](https://placehold.co/600x400/C0C0C0/000?text=About) | ![Skills](https://placehold.co/600x400/C0C0C0/000?text=Skills) |
+<img width="1920" height="964" alt="Portfolio-Alex-Rivera" src="https://github.com/user-attachments/assets/6f6c4954-be57-4c12-bc40-e953566e38d7" />
 
 ---
 
