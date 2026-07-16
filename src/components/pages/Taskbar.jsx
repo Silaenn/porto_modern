@@ -42,7 +42,7 @@ const Taskbar = ({ openWindows, activeWindow, minimizedWindows, onWindowClick, o
         onClick={onStartClick}
       >
         <div
-          className="flex items-center gap-1 px-1 py-0.5 h-5/6"
+          className="flex items-center gap-1 px-1 py-1 h-5/6"
           style={{
             boxShadow: "inset 1px 1px 0 #FFF, inset -1px -1px 0 #808080",
           }}
@@ -57,17 +57,17 @@ const Taskbar = ({ openWindows, activeWindow, minimizedWindows, onWindowClick, o
         </div>
       </button>
 
-      <div className="flex-1 flex items-center gap-0.5 px-1 overflow-x-auto">
+      <div className="flex-1 flex items-center gap-1 px-1 overflow-x-auto">
         {openWindows.map((w) => {
           const isMinimized = minimizedWindows && minimizedWindows.has(w.id);
           const isActive = activeWindow === w.id;
           return (
             <button
               key={w.id}
-              className="flex items-center gap-1.5 truncate cursor-pointer"
+              className="flex items-center gap-2 truncate cursor-pointer"
               style={{
                 height: "30px",
-                padding: "2px 8px",
+                padding: "4px 8px",
                 maxWidth: "220px",
                 background: isActive ? "#C0C0C0" : "#D4D4D4",
                 border: "1px solid #808080",

@@ -21,8 +21,8 @@ const AboutPage = () => {
         </div>
         <div className="flex-1">
           <h2 className="text-black font-bold text-base">Alex Rivera</h2>
-          <p className="text-blue-800 font-semibold text-xs mt-0.5">Full-Stack Developer</p>
-          <p className="text-gray-700 text-xs mt-0.5">San Francisco, CA</p>
+          <p className="text-blue-800 font-semibold text-xs mt-1">Full-Stack Developer</p>
+          <p className="text-gray-700 text-xs mt-1">San Francisco, CA</p>
           <p className="text-gray-700 text-xs">hello@alexrivera.dev</p>
           <p className="text-black text-xs mt-2 leading-relaxed">
             Creative problem solver passionate about building modern web
@@ -44,10 +44,10 @@ const AboutPage = () => {
                 <span className="text-gray-700 text-xs whitespace-nowrap ml-2">{s.history}</span>
               </div>
               <p className="text-gray-700 text-xs mb-1 leading-relaxed">{s.description}</p>
-              <ul className="space-y-0.5">
+              <ul className="space-y-1">
                 {s.achievements.map((a, j) => (
-                  <li key={j} className="text-gray-700 text-xs flex gap-1.5">
-                    <span className="text-blue-800 mt-0.5">&#8226;</span>
+                  <li key={j} className="text-gray-700 text-xs flex gap-2">
+                    <span className="text-blue-800 mt-1">&#8226;</span>
                     <span>{a}</span>
                   </li>
                 ))}
@@ -57,7 +57,7 @@ const AboutPage = () => {
         </div>
       </div>
 
-      <div className="bg-yellow-100 border border-yellow-400 p-2 mt-3 text-xs text-black">
+      <div className="bg-yellow-100 border border-yellow-400 p-3 mt-4 text-xs text-black">
         <span className="font-bold">Tip:</span> Check out my projects and skills using the other windows!
       </div>
     </div>

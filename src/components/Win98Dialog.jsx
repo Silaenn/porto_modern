@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
       borderTop: "2px solid #FFF",
       borderLeft: "2px solid #FFF",
       color: "#000",
-      minWidth: "75px",
+      minWidth: "72px",
     }}
     onClick={onClick}
   >
@@ -51,14 +51,14 @@ const Win98Dialog = ({ open, title, message, onClose, actions }) => {
               }}
             >
               <div
-                className="flex items-center px-1 py-0.5"
+                className="flex items-center px-1 py-1"
                 style={{
                   background: "linear-gradient(90deg, #000080, #1084D0)",
                   height: "24px",
                 }}
               >
                 <span
-                  className="text-white text-xs font-bold flex-1 truncate ml-0.5 font-win98"
+                  className="text-white text-xs font-bold flex-1 truncate ml-1 font-win98"
                 >
                   {title || "Notice"}
                 </span>
@@ -86,7 +86,7 @@ const Win98Dialog = ({ open, title, message, onClose, actions }) => {
                 </p>
               </div>
 
-              <div className="flex justify-center gap-2 pb-3">
+              <div className="flex justify-center gap-2 pb-4">
                 {actions ? (
                   actions.map((a, i) => (
                     <Btn key={i} onClick={a.onClick}>{a.label}</Btn>

@@ -25,7 +25,7 @@ const ExperiencePage = () => {
               <ul className="space-y-1">
                 {exp.points.map((point, i) => (
                   <li key={i} className="text-black text-xs flex gap-2">
-                    <span className="text-blue-800 mt-0.5">&#8226;</span>
+                    <span className="text-blue-800 mt-1">&#8226;</span>
                     <span>{point}</span>
                   </li>
                 ))}

@@ -81,7 +81,7 @@ const SkillsPage = () => {
         {skillCategories.map((cat) => (
           <div key={cat.name} className="bg-gray-200 border border-gray-400 overflow-hidden">
             <button
-              className="w-full flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-left cursor-pointer"
+              className="w-full flex items-center gap-2 px-3 py-2 text-xs font-bold text-left cursor-pointer"
               style={{
                 background: "linear-gradient(90deg, #000080, #1084D0)",
                 color: "#FFF",

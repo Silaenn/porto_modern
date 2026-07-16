@@ -45,11 +45,11 @@ const BlockBar = ({ progress, isMobile }) => {
   const filled = Math.floor((progress / 100) * blocks);
 
   return (
-    <div className="flex gap-[2px]">
+    <div className="flex gap-0.5">
       {Array.from({ length: blocks }).map((_, i) => (
         <div
           key={i}
-          className={isMobile ? "h-3 w-3" : "h-4 w-[18px]"}
+          className={isMobile ? "h-3 w-3" : "h-4 w-4"}
           style={{
             background: i < filled
               ? i < filled - 2
@@ -129,7 +129,7 @@ const BootScreen = ({ onFinish }) => {
               </h1>
             </motion.div>
 
-            <div className="mx-auto inline-block" style={{ background: "#0a0a0a", border: "2px solid #333", borderRadius: "2px", padding: isMobile ? "4px 3px" : "6px 4px" }}>
+            <div className="mx-auto inline-block" style={{ background: "#0a0a0a", border: "2px solid #333", borderRadius: "2px", padding: isMobile ? "4px" : "8px 4px" }}>
               <BlockBar progress={progress} isMobile={isMobile} />
             </div>
 

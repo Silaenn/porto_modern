@@ -11,7 +11,7 @@ const ProjectsPage = () => {
         background: "#C0C0C0",
       }}
     >
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-3">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4">
         {projects.map((project, i) => (
           <div
             key={i}
@@ -22,7 +22,7 @@ const ProjectsPage = () => {
             }}
             onClick={() => setSelected(selected === i ? null : i)}
           >
-            <div className="flex-1 bg-gray-400 border-b border-gray-400 flex items-center justify-center overflow-hidden min-h-[96px]">
+            <div className="flex-1 bg-gray-400 border-b border-gray-400 flex items-center justify-center overflow-hidden min-h-24">
               <img
                 src={project.image}
                 alt={project.name}
@@ -30,12 +30,12 @@ const ProjectsPage = () => {
                 style={{ imageRendering: "pixelated" }}
               />
             </div>
-            <div className="p-2">
+            <div className="p-3">
               <h3 className="text-black font-bold text-xs mb-1">{project.name}</h3>
               <p className="text-gray-700 text-xs mb-2 leading-relaxed line-clamp-2">{project.description}</p>
               <div className="flex flex-wrap gap-1">
                 {project.tags.map((t) => (
-                  <span key={t.name} className="text-xs bg-gray-300 border border-gray-400 px-1 py-0.5">
+                  <span key={t.name} className="text-xs bg-gray-300 border border-gray-400 px-2 py-1">
                     {t.name}
                   </span>
                 ))}

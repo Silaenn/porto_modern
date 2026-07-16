@@ -38,44 +38,44 @@ const ContactPage = () => {
 
       <form onSubmit={handleSubmit} className="flex flex-col h-full space-y-3">
         <div>
-          <label className="text-black text-xs font-bold block mb-0.5">Name</label>
+          <label className="text-black text-xs font-bold block mb-1">Name</label>
           <input
             type="text"
             name="name"
             value={form.name}
             onChange={handleChange}
             placeholder="Your name"
-            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-1 text-xs text-black rounded-none font-win98"
+            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-2 text-xs text-black rounded-none font-win98"
             required
           />
         </div>
         <div>
-          <label className="text-black text-xs font-bold block mb-0.5">Email</label>
+          <label className="text-black text-xs font-bold block mb-1">Email</label>
           <input
             type="email"
             name="email"
             value={form.email}
             onChange={handleChange}
             placeholder="your@email.com"
-            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-1 text-xs text-black rounded-none font-win98"
+            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-2 text-xs text-black rounded-none font-win98"
             required
           />
         </div>
         <div className="flex-1">
-          <label className="text-black text-xs font-bold block mb-0.5">Message</label>
+          <label className="text-black text-xs font-bold block mb-1">Message</label>
           <textarea
             name="message"
             value={form.message}
             onChange={handleChange}
             placeholder="Your message..."
-            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-1 text-xs text-black resize-none rounded-none h-full font-win98"
+            className="w-full bg-white border border-gray-500 border-t-gray-600 border-l-gray-600 px-2 py-2 text-xs text-black resize-none rounded-none h-full font-win98"
             required
           />
         </div>
         <button
           type="submit"
           disabled={loading}
-          className="w-full text-xs font-bold px-3 py-1.5 cursor-pointer font-win98"
+          className="w-full text-xs font-bold px-3 py-2 cursor-pointer font-win98"
           style={{
             background: loading ? "#444" : "#C0C0C0",
             color: loading ? "#CCC" : "#000",

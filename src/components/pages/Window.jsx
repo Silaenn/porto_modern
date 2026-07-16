@@ -28,11 +28,11 @@ const CLOSE_BTN = (
 );
 
 const Btn = ({ children, onClick, onMouseDown, onTouchStart }) => (
-  <button
-    className="win-btn"
-    style={{
-      width: "21px",
-      height: "21px",
+    <button
+      className="win-btn"
+      style={{
+        width: "20px",
+        height: "20px",
       background: "#C0C0C0",
       border: "1px solid #808080",
       borderTop: "1px solid #FFF",
@@ -41,7 +41,7 @@ const Btn = ({ children, onClick, onMouseDown, onTouchStart }) => (
       alignItems: "center",
       justifyContent: "center",
       cursor: "pointer",
-      padding: 0,
+      padding: "2px",
     }}
     onClick={onClick}
     onMouseDown={onMouseDown}
@@ -57,15 +57,15 @@ const RESIZE_GRIP = (
       position: "absolute",
       bottom: "0",
       right: "0",
-      width: "14px",
-      height: "14px",
+      width: "16px",
+      height: "16px",
       cursor: "se-resize",
       display: "flex",
       flexDirection: "column",
       alignItems: "flex-end",
       justifyContent: "flex-end",
-      padding: "1px",
-      gap: "1px",
+      padding: "2px",
+      gap: "2px",
     }}
     className="resize-grip"
   >
@@ -293,17 +293,17 @@ const Window = ({
         }}
       >
         <div
-          className="flex items-center px-1 py-0.5 cursor-default"
+          className="flex items-center px-1 py-1 cursor-default"
           style={{
             background: titleBarGrad,
-            height: "28px",
-            minHeight: "28px",
+            height: "24px",
+            minHeight: "24px",
           }}
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
         >
           {icon && (
-            <span className="flex items-center mr-1.5 ml-0.5">{icon}</span>
+            <span className="flex items-center mr-2 ml-1">{icon}</span>
           )}
           <span
             className="text-sm font-bold flex-1 truncate font-win98"
@@ -341,7 +341,7 @@ const Window = ({
 
         {!isMaximized && (
           <div
-            style={{ position: "relative", height: "14px", background: "#C0C0C0" }}
+            style={{ position: "relative", height: "16px", background: "#C0C0C0" }}
             onMouseDown={handleResizeMouseDown}
           >
             {RESIZE_GRIP}

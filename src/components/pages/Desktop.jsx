@@ -281,7 +281,7 @@ const Desktop = () => {
                     return (
                       <button
                         key={app.id}
-                        className="w-full flex items-center gap-2 px-2 py-1.5 text-left hover:bg-blue-800 hover:text-white cursor-pointer font-win98 text-xs"
+className="w-full flex items-center gap-2 px-2 py-2 text-left hover:bg-blue-800 hover:text-white cursor-pointer font-win98 text-xs"
                         style={{
                           border: "none",
                           background: "transparent",
@@ -298,7 +298,7 @@ const Desktop = () => {
                   <div className="border-t border-gray-400 my-1 mx-2" />
 
                   <button
-                    className="w-full flex items-center gap-2 px-2 py-1.5 text-left hover:bg-blue-800 hover:text-white cursor-pointer font-win98 text-xs"
+                    className="w-full flex items-center gap-2 px-2 py-2 text-left hover:bg-blue-800 hover:text-white cursor-pointer font-win98 text-xs"
                     style={{
                       border: "none",
                       background: "transparent",
