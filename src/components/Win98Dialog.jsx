@@ -1,7 +1,25 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Win98Dialog = ({ open, title, message, onClose }) => {
+const Btn = ({ children, onClick }) => (
+  <button
+    className="px-6 py-1 text-xs cursor-pointer"
+    style={{
+      background: "#C0C0C0",
+      border: "2px solid #808080",
+      borderTop: "2px solid #FFF",
+      borderLeft: "2px solid #FFF",
+      fontFamily: "Tahoma, sans-serif",
+      color: "#000",
+      minWidth: "75px",
+    }}
+    onClick={onClick}
+  >
+    {children}
+  </button>
+);
+
+const Win98Dialog = ({ open, title, message, onClose, actions }) => {
   return (
     <AnimatePresence>
       {open && (
@@ -71,22 +89,14 @@ const Win98Dialog = ({ open, title, message, onClose }) => {
                 </p>
               </div>
 
-              <div className="flex justify-center pb-3">
-                <button
-                  className="px-6 py-1 text-xs cursor-pointer"
-                  style={{
-                    background: "#C0C0C0",
-                    border: "2px solid #808080",
-                    borderTop: "2px solid #FFF",
-                    borderLeft: "2px solid #FFF",
-                    fontFamily: "Tahoma, sans-serif",
-                    color: "#000",
-                    minWidth: "75px",
-                  }}
-                  onClick={onClose}
-                >
-                  OK
-                </button>
+              <div className="flex justify-center gap-2 pb-3">
+                {actions ? (
+                  actions.map((a, i) => (
+                    <Btn key={i} onClick={a.onClick}>{a.label}</Btn>
+                  ))
+                ) : (
+                  <Btn onClick={onClose}>OK</Btn>
+                )}
               </div>
             </div>
           </motion.div>

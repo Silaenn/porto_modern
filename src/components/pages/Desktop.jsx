@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Window from "./Window";
 import DesktopIcon from "./DesktopIcon";
@@ -8,6 +8,7 @@ import ExperiencePage from "./ExperiencePage";
 import SkillsPage from "./SkillsPage";
 import ProjectsPage from "./ProjectsPage";
 import ContactPage from "./ContactPage";
+import Win98Dialog from "../Win98Dialog";
 import { NoteIcon, BriefcaseIcon, TerminalIcon, FolderIcon, MailIcon } from "../DesktopAppIcons";
 
 const desktopApps = [
@@ -42,8 +43,18 @@ const Desktop = () => {
   const [showStartMenu, setShowStartMenu] = useState(false);
   const [minimizedWindows, setMinimizedWindows] = useState(new Set());
   const [windowKeys, setWindowKeys] = useState({});
+  const [showShutdown, setShowShutdown] = useState(false);
   const openWindowsRef = useRef(openWindows);
   openWindowsRef.current = openWindows;
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const focusWindow = useCallback((id) => {
     setActiveWindow(id);
@@ -122,29 +133,45 @@ const Desktop = () => {
     [minimizedWindows, activeWindow, handleRestore, handleMinimize, focusWindow]
   );
 
-  const getWindowPosition = (id) => ({
-    about: { x: 60, y: 40 },
-    work: { x: 120, y: 80 },
-    skills: { x: 180, y: 60 },
-    projects: { x: 80, y: 100 },
-    contact: { x: 140, y: 50 },
-  }[id] || { x: 100, y: 100 });
+  const getWindowPosition = (id) => {
+    if (isMobile) return { x: 0, y: 0 };
+    return ({
+      about: { x: 60, y: 40 },
+      work: { x: 120, y: 80 },
+      skills: { x: 180, y: 60 },
+      projects: { x: 80, y: 100 },
+      contact: { x: 140, y: 50 },
+    }[id] || { x: 100, y: 100 });
+  };
 
-  const getWindowSize = (id) => ({
-    about: { width: 640, height: 480 },
-    work: { width: 700, height: 500 },
-    skills: { width: 640, height: 420 },
-    projects: { width: 740, height: 520 },
-    contact: { width: 540, height: 440 },
-  }[id] || { width: 600, height: 400 });
+  const getWindowSize = (id) => {
+    if (isMobile) return { width: window.innerWidth, height: window.innerHeight - 50 };
+    return ({
+      about: { width: 640, height: 480 },
+      work: { width: 700, height: 500 },
+      skills: { width: 640, height: 420 },
+      projects: { width: 740, height: 520 },
+      contact: { width: 540, height: 440 },
+    }[id] || { width: 600, height: 400 });
+  };
 
-  const desktopPositions = [
-    { id: "projects", left: 16, top: 20 },
-    { id: "about", left: 16, top: 120 },
-    { id: "work", left: 16, top: 220 },
-    { id: "skills", left: 16, top: 320 },
-    { id: "contact", left: 16, top: 420 },
-  ];
+  const iconSize = isMobile ? 24 : 32;
+
+  const desktopPositions = isMobile
+    ? [
+        { id: "projects", left: 8, top: 8 },
+        { id: "about", left: 8, top: 78 },
+        { id: "work", left: 8, top: 148 },
+        { id: "skills", left: 8, top: 218 },
+        { id: "contact", left: 8, top: 288 },
+      ]
+    : [
+        { id: "projects", left: 16, top: 20 },
+        { id: "about", left: 16, top: 120 },
+        { id: "work", left: 16, top: 220 },
+        { id: "skills", left: 16, top: 320 },
+        { id: "contact", left: 16, top: 420 },
+      ];
 
   return (
     <div
@@ -162,8 +189,9 @@ const Desktop = () => {
         return (
           <div key={id} style={{ position: "absolute", left, top }}>
             <DesktopIcon
-              icon={<IconCmp size={32} />}
+              icon={<IconCmp size={iconSize} />}
               label={app.label}
+              iconSize={iconSize}
               selected={selectedIcon === id}
               onClick={() => setSelectedIcon(selectedIcon === id ? null : id)}
               onDoubleClick={() => openApp(id)}
@@ -187,6 +215,7 @@ const Desktop = () => {
               onMinimize={() => handleMinimize(w.id)}
               defaultPosition={getWindowPosition(w.id)}
               defaultSize={getWindowSize(w.id)}
+              defaultMaximized={isMobile}
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.92 }}
@@ -223,15 +252,16 @@ const Desktop = () => {
               style={{
                 bottom: "40px",
                 left: "0",
+                right: isMobile ? "0" : "auto",
                 background: "#C0C0C0",
                 border: "2px solid #808080",
                 borderTop: "2px solid #FFF",
                 borderLeft: "2px solid #FFF",
-                minWidth: "200px",
+                minWidth: isMobile ? "auto" : "200px",
                 boxShadow: "2px -2px 5px rgba(0,0,0,0.3)",
               }}
             >
-              <div className="flex" style={{ minHeight: "300px" }}>
+              <div className="flex" style={{ minHeight: isMobile ? "auto" : "300px" }}>
                 <div
                   className="flex flex-col items-center py-2 px-1"
                   style={{
@@ -279,9 +309,7 @@ const Desktop = () => {
                     }}
                     onClick={() => {
                       setShowStartMenu(false);
-                      if (confirm("Shut down the computer?")) {
-                        window.location.reload();
-                      }
+                      setShowShutdown(true);
                     }}
                   >
                     <svg width="20" height="20" viewBox="0 0 32 32" style={{imageRendering: "pixelated"}}>
@@ -297,6 +325,17 @@ const Desktop = () => {
           </>
         )}
       </AnimatePresence>
+
+      <Win98Dialog
+        open={showShutdown}
+        title="Shut Down"
+        message="Shut down the computer?"
+        onClose={() => setShowShutdown(false)}
+        actions={[
+          { label: "Yes", onClick: () => { setShowShutdown(false); window.location.reload(); } },
+          { label: "No", onClick: () => setShowShutdown(false) },
+        ]}
+      />
     </div>
   );
 };

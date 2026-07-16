@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const WIN98_FLAG = (
-  <svg width="64" height="64" viewBox="0 0 64 64" style={{imageRendering: "pixelated"}}>
+const FlagSVG = ({ size = 64 }) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" style={{imageRendering: "pixelated"}}>
     <defs>
       <linearGradient id="flagShine" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stopColor="rgba(255,255,255,0.3)" />
@@ -40,8 +40,8 @@ const CRT = (
   />
 );
 
-const BlockBar = ({ progress }) => {
-  const blocks = 20;
+const BlockBar = ({ progress, isMobile }) => {
+  const blocks = isMobile ? 12 : 20;
   const filled = Math.floor((progress / 100) * blocks);
 
   return (
@@ -49,7 +49,7 @@ const BlockBar = ({ progress }) => {
       {Array.from({ length: blocks }).map((_, i) => (
         <div
           key={i}
-          className="h-4 w-[18px]"
+          className={isMobile ? "h-3 w-3" : "h-4 w-[18px]"}
           style={{
             background: i < filled
               ? i < filled - 2
@@ -71,6 +71,14 @@ const BlockBar = ({ progress }) => {
 const BootScreen = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
   const [shown, setShown] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -98,22 +106,22 @@ const BootScreen = ({ onFinish }) => {
           {CRT}
 
           <motion.div
-            className="text-center mb-10"
+            className={`text-center ${isMobile ? "mb-6 px-4" : "mb-10"}`}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <motion.div
-              className="flex items-center justify-center gap-4 mb-6"
+              className={`flex items-center justify-center ${isMobile ? "gap-2 mb-4" : "gap-4 mb-6"}`}
               animate={{ opacity: [0.8, 1, 0.8] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
             >
-              {WIN98_FLAG}
+              <FlagSVG size={isMobile ? 40 : 64} />
               <h1
                 className="text-white tracking-wide"
                 style={{
                   fontFamily: "'Press Start 2P', monospace",
-                  fontSize: "20px",
+                  fontSize: isMobile ? "12px" : "20px",
                   textShadow: "0 0 20px rgba(0,100,255,0.3)",
                 }}
               >
@@ -121,21 +129,21 @@ const BootScreen = ({ onFinish }) => {
               </h1>
             </motion.div>
 
-            <div className="mx-auto inline-block" style={{ background: "#0a0a0a", border: "2px solid #333", borderRadius: "2px", padding: "6px 4px" }}>
-              <BlockBar progress={progress} />
+            <div className="mx-auto inline-block" style={{ background: "#0a0a0a", border: "2px solid #333", borderRadius: "2px", padding: isMobile ? "4px 3px" : "6px 4px" }}>
+              <BlockBar progress={progress} isMobile={isMobile} />
             </div>
 
             <p
               className="text-gray-500 mt-4"
-              style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "8px" }}
+              style={{ fontFamily: "'Press Start 2P', monospace", fontSize: isMobile ? "6px" : "8px" }}
             >
               {progress < 100 ? "Please wait while Windows starts..." : "Welcome!"}
             </p>
           </motion.div>
 
           <motion.p
-            className="text-gray-700 text-xs absolute bottom-8"
-            style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "7px" }}
+            className={`text-gray-700 text-xs ${isMobile ? "absolute bottom-4" : "absolute bottom-8"}`}
+            style={{ fontFamily: "'Press Start 2P', monospace", fontSize: isMobile ? "5px" : "7px" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}

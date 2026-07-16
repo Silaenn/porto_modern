@@ -27,7 +27,7 @@ const CLOSE_BTN = (
   </svg>
 );
 
-const Btn = ({ children, onClick, onMouseDown }) => (
+const Btn = ({ children, onClick, onMouseDown, onTouchStart }) => (
   <button
     className="win-btn"
     style={{
@@ -45,6 +45,7 @@ const Btn = ({ children, onClick, onMouseDown }) => (
     }}
     onClick={onClick}
     onMouseDown={onMouseDown}
+    onTouchStart={onTouchStart}
   >
     {children}
   </button>
@@ -94,6 +95,7 @@ const Window = ({
   exit,
   transition,
   style: externalStyle,
+  defaultMaximized = false,
 }) => {
   const [position, setPosition] = useState(defaultPosition);
   const [size, setSize] = useState(defaultSize);
@@ -101,10 +103,19 @@ const Window = ({
   const [isResizing, setIsResizing] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [isMinimizing, setIsMinimizing] = useState(false);
-  const [isMaximized, setIsMaximized] = useState(false);
-  const [maximizedState, setMaximizedState] = useState(null);
+  const [isMaximized, setIsMaximized] = useState(defaultMaximized);
+  const [maximizedState, setMaximizedState] = useState(
+    defaultMaximized ? { position: defaultPosition, size: defaultSize } : null
+  );
   const dragRef = useRef({ startX: 0, startY: 0, startPosX: 0, startPosY: 0 });
   const resizeRef = useRef({ startX: 0, startY: 0, startW: 0, startH: 0 });
+
+  useEffect(() => {
+    if (defaultMaximized) {
+      setPosition({ x: 0, y: 0 });
+      setSize({ width: window.innerWidth, height: window.innerHeight - 50 });
+    }
+  }, [defaultMaximized]);
 
   const handleMouseDown = useCallback(
     (e) => {
@@ -114,6 +125,22 @@ const Window = ({
       dragRef.current = {
         startX: e.clientX,
         startY: e.clientY,
+        startPosX: position.x,
+        startPosY: position.y,
+      };
+    },
+    [position, isMaximized, onFocus]
+  );
+
+  const handleTouchStart = useCallback(
+    (e) => {
+      onFocus();
+      if (isMaximized) return;
+      const touch = e.touches[0];
+      setIsDragging(true);
+      dragRef.current = {
+        startX: touch.clientX,
+        startY: touch.clientY,
         startPosX: position.x,
         startPosY: position.y,
       };
@@ -143,7 +170,27 @@ const Window = ({
     [isDragging, isResizing]
   );
 
+  const handleTouchMove = useCallback(
+    (e) => {
+      if (isDragging) {
+        const touch = e.touches[0];
+        const dx = touch.clientX - dragRef.current.startX;
+        const dy = touch.clientY - dragRef.current.startY;
+        setPosition({
+          x: Math.max(0, dragRef.current.startPosX + dx),
+          y: Math.max(0, dragRef.current.startPosY + dy),
+        });
+      }
+    },
+    [isDragging]
+  );
+
   const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+    setIsResizing(false);
+  }, []);
+
+  const handleTouchEnd = useCallback(() => {
     setIsDragging(false);
     setIsResizing(false);
   }, []);
@@ -167,12 +214,16 @@ const Window = ({
     if (isDragging || isResizing) {
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseup", handleMouseUp);
+      window.addEventListener("touchmove", handleTouchMove, { passive: false });
+      window.addEventListener("touchend", handleTouchEnd);
     }
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [isDragging, isResizing, handleMouseMove, handleMouseUp]);
+  }, [isDragging, isResizing, handleMouseMove, handleMouseUp, handleTouchMove, handleTouchEnd]);
 
   const handleMinimize = () => {
     if (onMinimize) {
@@ -214,10 +265,12 @@ const Window = ({
     <Root
       className="absolute"
       style={{
-        left: position.x,
-        top: position.y,
+        left: isMaximized ? 0 : position.x,
+        top: isMaximized ? 0 : position.y,
         width: isMaximized ? "100vw" : size.width,
         height: isMaximized ? "calc(100vh - 50px)" : size.height,
+        maxWidth: "100vw",
+        maxHeight: "calc(100vh - 50px)",
         ...externalStyle,
       }}
       {...animProps}
@@ -239,6 +292,7 @@ const Window = ({
             minHeight: "28px",
           }}
           onMouseDown={handleMouseDown}
+          onTouchStart={handleTouchStart}
         >
           {icon && (
             <span className="flex items-center mr-1.5 ml-0.5">{icon}</span>
@@ -255,13 +309,13 @@ const Window = ({
           </span>
 
           <div className="flex gap-1">
-            <Btn onClick={handleMinimize} onMouseDown={(e) => e.stopPropagation()}>
+            <Btn onClick={handleMinimize} onMouseDown={(e) => e.stopPropagation()} onTouchStart={(e) => e.stopPropagation()}>
               {MIN_BTN}
             </Btn>
-            <Btn onClick={handleMaximize} onMouseDown={(e) => e.stopPropagation()}>
+            <Btn onClick={handleMaximize} onMouseDown={(e) => e.stopPropagation()} onTouchStart={(e) => e.stopPropagation()}>
               {isMaximized ? RESTORE_BTN : MAX_BTN}
             </Btn>
-            <Btn onClick={onClose} onMouseDown={(e) => e.stopPropagation()}>
+            <Btn onClick={onClose} onMouseDown={(e) => e.stopPropagation()} onTouchStart={(e) => e.stopPropagation()}>
               {CLOSE_BTN}
             </Btn>
           </div>
