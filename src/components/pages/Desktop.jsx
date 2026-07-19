@@ -177,8 +177,11 @@ const Desktop = () => {
       ];
 
   return (
-    <div
+    <motion.div
       className="fixed inset-0 select-none"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
       style={{
         backgroundColor: "#008080",
         backgroundImage: `radial-gradient(circle at 20% 30%, rgba(0,255,255,0.08) 0%, transparent 50%),
@@ -335,7 +338,7 @@ className="w-full flex items-center gap-2 px-2 py-2 text-left hover:bg-blue-800 
           { label: "No", onClick: () => setShowShutdown(false) },
         ]}
       />
-    </div>
+    </motion.div>
   );
 };
 

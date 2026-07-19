@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Taskbar = ({ openWindows, activeWindow, minimizedWindows, onWindowClick, onStartClick }) => {
   const [clock, setClock] = React.useState(new Date());
@@ -22,8 +23,11 @@ const Taskbar = ({ openWindows, activeWindow, minimizedWindows, onWindowClick, o
   });
 
   return (
-    <div
+    <motion.div
       className="fixed bottom-0 left-0 right-0 z-[9999] flex items-center font-win98 text-xs"
+      initial={{ y: 44 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.35, delay: 0.1, ease: "easeOut" }}
       style={{
         height: "44px",
         background: "#C0C0C0",
@@ -100,7 +104,7 @@ const Taskbar = ({ openWindows, activeWindow, minimizedWindows, onWindowClick, o
           {timeStr}
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
