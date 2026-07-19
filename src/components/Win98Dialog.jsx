@@ -22,21 +22,24 @@ const Win98Dialog = ({ open, title, message, onClose, actions }) => {
   return (
     <AnimatePresence>
       {open && (
-        <>
+        <motion.div
+          className="fixed inset-0 z-[10000] flex items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.12 }}
+        >
           <div
-            className="fixed inset-0 z-[10000]"
+            className="absolute inset-0"
             onClick={onClose}
           />
           <motion.div
-            className="fixed z-[10001]"
+            className="relative z-10"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.12 }}
             style={{
-              left: "50%",
-              top: "50%",
-              transform: "translate(-50%, -50%)",
               minWidth: "280px",
               maxWidth: "360px",
             }}
@@ -97,7 +100,7 @@ const Win98Dialog = ({ open, title, message, onClose, actions }) => {
               </div>
             </div>
           </motion.div>
-        </>
+        </motion.div>
       )}
     </AnimatePresence>
   );
