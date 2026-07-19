@@ -77,10 +77,12 @@ const Desktop = () => {
           ...prev,
           { id, title: app.title, iconName: app.iconName, iconCmp: IconCmp },
         ]);
+      } else if (minimizedWindows.has(id)) {
+        setWindowKeys((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
       }
       setTimeout(() => focusWindow(id), 50);
     },
-    [focusWindow]
+    [focusWindow, minimizedWindows]
   );
 
   const closeWindow = useCallback((id) => {

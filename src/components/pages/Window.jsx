@@ -269,10 +269,9 @@ const Window = ({
     ? { animate: { opacity: 0, scale: 0.3, y: 300 }, transition: { duration: 0.2, ease: "easeIn" } }
     : { initial, animate, exit, transition };
 
-  const Root = (initial || isMinimizing) ? motion.div : "div";
-
   return (
-    <Root
+    <motion.div
+      layout
       className="absolute"
       style={{
         left: isMaximized ? 0 : position.x,
@@ -350,7 +349,7 @@ const Window = ({
           </div>
         )}
       </div>
-    </Root>
+    </motion.div>
   );
 };
 
