@@ -161,9 +161,10 @@ const Window = ({
       if (isDragging) {
         const dx = e.clientX - dragRef.current.startX;
         const dy = e.clientY - dragRef.current.startY;
+        const maxY = window.innerHeight - 44 - size.height;
         setPosition({
           x: Math.max(0, dragRef.current.startPosX + dx),
-          y: Math.max(0, dragRef.current.startPosY + dy),
+          y: Math.max(0, Math.min(dragRef.current.startPosY + dy, maxY)),
         });
       }
       if (isResizing) {
@@ -175,7 +176,7 @@ const Window = ({
         });
       }
     },
-    [isDragging, isResizing]
+    [isDragging, isResizing, size.height]
   );
 
   const handleTouchMove = useCallback(
@@ -184,13 +185,14 @@ const Window = ({
         const touch = e.touches[0];
         const dx = touch.clientX - dragRef.current.startX;
         const dy = touch.clientY - dragRef.current.startY;
+        const maxY = window.innerHeight - 44 - size.height;
         setPosition({
           x: Math.max(0, dragRef.current.startPosX + dx),
-          y: Math.max(0, dragRef.current.startPosY + dy),
+          y: Math.max(0, Math.min(dragRef.current.startPosY + dy, maxY)),
         });
       }
     },
-    [isDragging]
+    [isDragging, size.height]
   );
 
   const handleMouseUp = useCallback(() => {
@@ -276,9 +278,9 @@ const Window = ({
         left: isMaximized ? 0 : position.x,
         top: isMaximized ? 0 : position.y,
         width: isMaximized ? "100vw" : size.width,
-        height: isMaximized ? "calc(100vh - 44px)" : size.height,
+        height: isMaximized ? "calc(100dvh - 44px)" : size.height,
         maxWidth: "100vw",
-        maxHeight: "calc(100vh - 44px)",
+        maxHeight: "calc(100dvh - 44px)",
         ...externalStyle,
       }}
       {...animProps}
